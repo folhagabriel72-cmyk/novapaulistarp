@@ -1,0 +1,70 @@
+
+// api/create-pix.js - Vercel Serverless Function
+const https = require('https');
+const CLIENT_ID = process.env.EFI_CLIENT_ID || "044b40236e3dc54400a875dc26c673bcba9295b1";
+const CLIENT_SECRET = process.env.EFI_CLIENT_SECRET || "e50e9c2c232fb11d2cb5c5f702861e19b0b72d18";
+
+async function getAccessToken(){
+  const credentials = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64');
+  return new Promise((resolve, reject)=>{
+    const req = https.request({
+      hostname: 'pix.api.efipay.com.br',
+      path: '/oauth/token',
+      method: 'POST',
+      headers: {
+        'Authorization': `Basic ${credentials}`,
+        'Content-Type': 'application/json'
+      }
+    }, res=>{
+      let data=''; res.on('data', d=>data+=d); res.on('end', ()=>{
+        try{ const j=JSON.parse(data); resolve(j.access_token); }catch(e){ reject(data); }
+      });
+    });
+    req.on('error', reject);
+    req.write(JSON.stringify({ grant_type: 'client_credentials' }));
+    req.end();
+  });
+}
+
+export default async function handler(req, res){
+  res.setHeader('Access-Control-Allow-Origin','*');
+  res.setHeader('Access-Control-Allow-Methods','POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers','Content-Type');
+  if(req.method==='OPTIONS') return res.status(200).end();
+  if(req.method!=='POST') return res.status(405).json({error:'Method not allowed'});
+  const { amount, planName, mtaNick, discordId, discordUsername } = req.body;
+  try{
+    const token = await getAccessToken();
+    const cobData = JSON.stringify({
+      calendario: { expiracao: 3600 },
+      devedor: { nome: discordUsername || "Cliente", cpf: "00000000000" },
+      valor: { original: Number(amount).toFixed(2) },
+      chave: process.env.EFI_PIX_KEY || "felipemellocouto@outlook.com",
+      solicitacaoPagador: `${planName} - ${mtaNick} - 30 dias`
+    });
+    const cobRes = await new Promise((resolve, reject)=>{
+      const r = https.request({
+        hostname: 'pix.api.efipay.com.br',
+        path: '/v2/cob',
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
+      }, resp=>{ let d=''; resp.on('data', c=>d+=c); resp.on('end', ()=>resolve({status: resp.statusCode, body: d})); });
+      r.on('error', reject); r.write(cobData); r.end();
+    });
+    const cob = JSON.parse(cobRes.body);
+    const locId = cob.loc.id;
+    const qrRes = await new Promise((resolve, reject)=>{
+      const r = https.request({
+        hostname: 'pix.api.efipay.com.br',
+        path: `/v2/loc/${locId}/qrcode`,
+        method: 'GET',
+        headers: { 'Authorization': `Bearer ${token}` }
+      }, resp=>{ let d=''; resp.on('data', c=>d+=c); resp.on('end', ()=>resolve(d)); });
+      r.on('error', reject); r.end();
+    });
+    const qr = JSON.parse(qrRes);
+    return res.status(200).json({ txid: cob.txid, pixCopiaECola: qr.qrcode, imagemQrcode: qr.imagemQrcode });
+  }catch(err){
+    return res.status(500).json({ error: err.message || err.toString() });
+  }
+}
