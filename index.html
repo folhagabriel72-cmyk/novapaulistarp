@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nova Paulista Roleplay — Loja Oficial VIP</title>
+<title>Nova Paulista Roleplay — Loja Oficial</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-  :root{ --asphalt:#0e0f12; --asphalt-2:#17181c; --plate:#1b1c20; --line:#2e2f34; --red:#e23b3b; --red-dim:#7a2424; --off:#eeece6; --off-dim:#97949c; --green:#2ecc71; --discord-blue:#5865F2; }
+  :root{ --asphalt:#0e0f12; --asphalt-2:#17181c; --plate:#1b1c20; --line:#2e2f34; --red:#e23b3b; --off:#eeece6; --off-dim:#97949c; --green:#2ecc71; --discord-blue:#5865F2; }
   *{box-sizing:border-box;margin:0;padding:0} body{background:var(--asphalt);color:var(--off);font-family:'Inter',sans-serif}
   h1,h2,h3{font-family:'Oswald',sans-serif} .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
   header{border-bottom:1px solid var(--line);padding:18px 0;position:sticky;top:0;z-index:10;background:rgba(14,15,18,.95);backdrop-filter:blur(10px)}
@@ -15,54 +15,46 @@
   .nav-right{display:flex;align-items:center;gap:16px} .nav nav{display:flex;gap:16px} .nav a{color:var(--off-dim);text-decoration:none;font-size:.9rem} .admin-link{color:var(--red)!important;font-weight:600;cursor:pointer}
   .discord-auth-btn{background:var(--discord-blue);color:#fff;border:none;padding:8px 16px;border-radius:4px;font-weight:700;font-size:.85rem;cursor:pointer}
   .user-badge{display:flex;align-items:center;gap:10px;background:var(--plate);border:1px solid var(--line);padding:4px 12px 4px 4px;border-radius:99px;font-size:.82rem} .user-badge img{width:28px;height:28px;border-radius:50%} .user-badge button{background:var(--asphalt-2);border:1px solid var(--line);color:var(--off-dim);width:20px;height:20px;border-radius:50%;cursor:pointer}
-  .hero{padding:88px 0 60px;text-align:center;position:relative} .hero::before{content:"";position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:720px;height:380px;background:radial-gradient(ellipse at center,rgba(226,59,59,.18),transparent 70%);pointer-events:none}
-  .hero .tag{display:inline-block;background:var(--red);color:#0e0f12;font-family:'Oswald',sans-serif;font-size:.82rem;padding:6px 14px;border-radius:3px;font-weight:700;margin-bottom:22px}
+  .hero{padding:88px 0 60px;text-align:center} .hero .tag{display:inline-block;background:var(--red);color:#0e0f12;font-family:'Oswald',sans-serif;font-size:.82rem;padding:6px 14px;border-radius:3px;font-weight:700;margin-bottom:22px}
   .hero h1{font-size:clamp(2.8rem,7.5vw,4.8rem);font-weight:700;line-height:.98;text-transform:uppercase} .hero h1 em{color:var(--red);font-style:normal} .hero .sub{max-width:600px;margin:22px auto 0;color:var(--off);font-size:1.18rem;font-weight:500;line-height:1.4} .hero .sub b{color:var(--red)} .hero .sub2{max-width:520px;margin:12px auto 0;color:var(--off-dim);font-size:.95rem}
-  .hero .cta-row{margin-top:32px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap} .hero .cta-main{background:var(--red);color:#0e0f12;border:none;padding:14px 28px;border-radius:4px;font-family:'Oswald',sans-serif;font-weight:700;font-size:1rem;cursor:pointer} .hero .cta-sec{background:transparent;border:1px solid var(--line);color:var(--off);padding:14px 24px;border-radius:4px;font-family:'Oswald',sans-serif;font-weight:600;font-size:.95rem;cursor:pointer}
+  .hero .cta-row{margin-top:32px} .hero .cta-main{background:var(--red);color:#0e0f12;border:none;padding:14px 28px;border-radius:4px;font-family:'Oswald',sans-serif;font-weight:700;font-size:1rem;cursor:pointer}
   .section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:36px} .section-head .plate-tag{font-family:'Oswald',sans-serif;font-weight:700;font-size:.85rem;background:var(--red);color:#0e0f12;padding:3px 9px;border-radius:2px} .section-head h2{font-size:1.6rem;font-weight:600;text-transform:uppercase} section{padding:56px 0}
-  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px} .plan{--accent:var(--red);background:var(--plate);border:1px solid var(--line);border-radius:8px;padding:24px 20px 22px;display:flex;flex-direction:column;position:relative;overflow:hidden} .plan::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)} .plan:hover{border-color:var(--accent);transform:translateY(-3px)} .plan-head{display:flex;align-items:center;gap:12px;margin-bottom:12px} .plan-icon{width:38px;height:38px;border-radius:50%;background:color-mix(in srgb,var(--accent) 20%,transparent);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.2rem} .plan h3{font-size:1.22rem;font-weight:700;color:var(--accent);text-transform:uppercase} .plan .duration-badge{display:inline-block;background:var(--asphalt-2);border:1px solid var(--line);color:var(--off-dim);font-size:.68rem;padding:3px 8px;border-radius:99px;margin-bottom:10px;font-weight:600;letter-spacing:.04em} .plan .slogan{font-size:.82rem;color:var(--off);font-weight:600;font-style:italic;margin-bottom:14px;line-height:1.3;min-height:38px} .plan-block{margin-bottom:14px} .plan-label{font-size:.66rem;font-weight:700;color:var(--off-dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;display:flex;align-items:center;gap:6px} .plan-label::after{content:"";flex:1;height:1px;background:var(--line)} .plan ul{list-style:none} .plan ul li{font-size:.85rem;padding:4px 0;display:flex;gap:8px;color:var(--off)} .plan ul li::before{content:"✓";color:var(--accent);font-weight:700} .plan-bonus{background:var(--asphalt-2);border:1px solid var(--line);border-radius:4px;padding:10px 12px;font-size:.85rem;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center} .plan-bonus b{color:var(--accent);font-family:'Oswald',sans-serif;font-size:1rem} .plan-vehicles{background:linear-gradient(180deg,rgba(226,59,59,0.08),transparent);border:1px dashed var(--line);border-radius:6px;padding:12px;margin-bottom:16px} .plan-vehicles .veh-item{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:.85rem} .plan-vehicles .veh-item b{color:var(--off);font-weight:700} .plan-vehicles .veh-item span{color:var(--off-dim);font-size:.72rem;background:var(--asphalt-2);padding:3px 7px;border-radius:3px;border:1px solid var(--line);text-transform:uppercase;font-weight:600} .plan-footer{margin-top:auto} .plan .price{font-family:'Oswald',sans-serif;font-size:2rem;font-weight:700} .plan .price span{font-size:.9rem;font-family:'Oswald',sans-serif;color:var(--off-dim);font-weight:500;text-transform:lowercase} .plan .price-note{font-size:.72rem;color:var(--off-dim);margin-top:4px;display:flex;align-items:center;gap:6px} .plan .price-note::before{content:"⏱";color:var(--red)} .buy-btn{width:100%;margin-top:14px;background:var(--accent);color:#0e0f12;border:none;padding:13px 0;border-radius:4px;font-family:'Oswald',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;text-transform:uppercase;letter-spacing:.03em}
-  .social-proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--asphalt-2);padding:18px 0} .social-proof .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px} .sp-item{font-size:.85rem;color:var(--off-dim);text-align:center} .sp-item b{color:var(--off);font-family:'Oswald',sans-serif;font-size:1.05rem;display:block}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px} .step{border-left:2px solid var(--red-dim);padding:6px 0 6px 20px} .step .n{font-family:'Oswald',sans-serif;color:var(--red);font-weight:700;font-size:.9rem} .step h4{font-size:1.08rem;font-weight:700;margin:8px 0 6px;text-transform:uppercase} .step p{color:var(--off-dim);font-size:.9rem;line-height:1.4} footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--off-dim);font-size:.85rem} footer a{color:var(--red);text-decoration:none}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px} .plan{--accent:var(--red);background:var(--plate);border:1px solid var(--line);border-radius:8px;padding:24px 20px 22px;display:flex;flex-direction:column;position:relative} .plan::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)} .plan:hover{border-color:var(--accent);transform:translateY(-3px)} .plan-head{display:flex;align-items:center;gap:12px;margin-bottom:12px} .plan-icon{width:38px;height:38px;border-radius:50%;background:color-mix(in srgb,var(--accent) 20%,transparent);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.2rem} .plan h3{font-size:1.22rem;font-weight:700;color:var(--accent);text-transform:uppercase} .plan .duration-badge{display:inline-block;background:var(--asphalt-2);border:1px solid var(--line);color:var(--off-dim);font-size:.68rem;padding:3px 8px;border-radius:99px;margin-bottom:10px;font-weight:600} .plan .slogan{font-size:.82rem;color:var(--off);font-weight:600;font-style:italic;margin-bottom:14px;line-height:1.3;min-height:38px} .plan-block{margin-bottom:14px} .plan-label{font-size:.66rem;font-weight:700;color:var(--off-dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;display:flex;align-items:center;gap:6px} .plan-label::after{content:"";flex:1;height:1px;background:var(--line)} .plan ul{list-style:none} .plan ul li{font-size:.85rem;padding:4px 0;display:flex;gap:8px;color:var(--off)} .plan ul li::before{content:"✓";color:var(--accent);font-weight:700} .plan-bonus{background:var(--asphalt-2);border:1px solid var(--line);border-radius:4px;padding:10px 12px;font-size:.85rem;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center} .plan-bonus b{color:var(--accent);font-family:'Oswald',sans-serif;font-size:1rem} .plan-vehicles{border:1px dashed var(--line);border-radius:6px;padding:12px;margin-bottom:16px} .plan-vehicles .veh-item{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:.85rem} .plan-vehicles .veh-item b{font-weight:700} .plan-vehicles .veh-item span{color:var(--off-dim);font-size:.72rem;background:var(--asphalt-2);padding:3px 7px;border-radius:3px;border:1px solid var(--line);text-transform:uppercase;font-weight:600} .plan-footer{margin-top:auto} .plan .price{font-family:'Oswald',sans-serif;font-size:2rem;font-weight:700} .plan .price span{font-size:.9rem;font-family:'Oswald',sans-serif;color:var(--off-dim);font-weight:500;text-transform:lowercase} .plan .price-note{font-size:.72rem;color:var(--off-dim);margin-top:4px} .buy-btn{width:100%;margin-top:14px;background:var(--accent);color:#0e0f12;border:none;padding:13px 0;border-radius:4px;font-family:'Oswald',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;text-transform:uppercase}
+  .social-proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--asphalt-2);padding:18px 0} .social-proof .wrap{display:flex;justify-content:space-around;flex-wrap:wrap;gap:16px} .sp-item{font-size:.85rem;color:var(--off-dim);text-align:center} .sp-item b{color:var(--off);font-family:'Oswald',sans-serif;font-size:1.05rem;display:block}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px} .step{border-left:2px solid #7a2424;padding:6px 0 6px 20px} .step .n{font-family:'Oswald',sans-serif;color:var(--red);font-weight:700} .step h4{font-size:1.08rem;font-weight:700;margin:8px 0 6px;text-transform:uppercase} .step p{color:var(--off-dim);font-size:.9rem;line-height:1.4} footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--off-dim);font-size:.85rem} footer a{color:var(--red);text-decoration:none}
   .overlay{position:fixed;inset:0;background:rgba(6,6,8,.88);display:none;align-items:center;justify-content:center;z-index:200;padding:20px} .overlay.open{display:flex} .modal{background:var(--plate);border:1px solid var(--line);border-radius:8px;max-width:440px;width:100%;padding:28px 26px 24px;position:relative;max-height:90vh;overflow-y:auto} .modal .close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--off-dim);font-size:1.3rem;cursor:pointer} .form-group{margin-bottom:14px} .form-group label{display:block;font-size:.75rem;font-weight:600;color:var(--off-dim);text-transform:uppercase;margin-bottom:5px} .form-group input{width:100%;background:var(--asphalt-2);border:1px solid var(--line);border-radius:4px;color:var(--off);font-size:.9rem;padding:11px 12px} #qrcode{display:flex;justify-content:center;background:#fff;padding:14px;border-radius:6px;margin:14px 0} .copy-box{display:flex;gap:8px;margin-bottom:16px} .copy-box input{flex:1;background:var(--asphalt-2);border:1px solid var(--line);border-radius:4px;color:var(--off-dim);font-size:.75rem;padding:9px 10px} .copy-box button{background:var(--asphalt-2);border:1px solid var(--line);color:var(--off);border-radius:4px;padding:0 14px;cursor:pointer} .action-btn{display:block;width:100%;text-align:center;background:var(--red);color:#0e0f12;padding:13px 0;border-radius:4px;font-family:'Oswald',sans-serif;font-weight:700;border:none;cursor:pointer;font-size:1rem;text-transform:uppercase}
-  @media(max-width:920px){.plans{grid-template-columns:repeat(2,1fr)}} @media(max-width:620px){.plans,.steps{grid-template-columns:1fr}.hero h1{font-size:2.6rem}}
+  @media(max-width:920px){.plans{grid-template-columns:repeat(2,1fr)}} @media(max-width:620px){.plans,.steps{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap nav">
-    <div class="brand"><img src="https://i.imgur.com/D3haWTc.jpeg"><div class="brand-text">NOVA <span>PAULISTA</span><small>MTA ROLEPLAY</small></div></div>
-    <div class="nav-right"><nav><a href="#planos">Loja VIP</a></nav><div id="auth-container"></div><a class="admin-link" id="open-admin-modal">Admin</a></div>
-  </div>
-</header>
+<header><div class="wrap nav"><div class="brand"><img src="https://i.imgur.com/D3haWTc.jpeg"><div class="brand-text">NOVA <span>PAULISTA</span><small>MTA ROLEPLAY</small></div></div><div class="nav-right"><nav><a href="#planos">Loja VIP</a></nav><div id="auth-container"></div><a class="admin-link" id="open-admin-modal">Admin</a></div></div></header>
 
 <section class="hero">
   <div class="wrap">
-    <span class="tag">🚀 LANÇAMENTO OFICIAL — SEJA UM DOS PRIMEIROS</span>
-    <h1>Entre no <em>começo</em><br>e vire lenda.</h1>
-    <p class="sub">A cidade abriu hoje. Quem chega primeiro <b>escreve a história.</b> Garanta seu VIP e comece no topo, não na fila.</p>
-    <p class="sub2">Todos os VIPs com duração de 30 dias • Ativação em até 5 minutos • Suporte no Discord</p>
-    <div class="cta-row">
-      <button class="cta-main" onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">GARANTIR MEU VIP — 30 DIAS ↓</button>
-    </div>
+    <span class="tag">LOJA OFICIAL VIP — ENTREGA IMEDIATA</span>
+    <h1>Não jogue.<br><em>Domine</em> a cidade.</h1>
+    <p class="sub">Quem tem VIP não pede respeito. <b>Impõe.</b> Escolha seu nível e faça todos virarem o pescoço quando você passar.</p>
+    <p class="sub2">VIPs mensais com duração de 30 dias • Ativação em até 5 minutos</p>
+    <div class="cta-row"><button class="cta-main" onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">VER VIPS MENSAIS ↓</button></div>
   </div>
 </section>
 
 <div class="social-proof">
   <div class="wrap">
-    <div class="sp-item"><b>LANÇAMENTO HOJE</b>Fundadores sendo definidos</div>
-    <div class="sp-item"><b>30 DIAS</b>Todos os VIPs mensais</div>
-    <div class="sp-item"><b>5 MIN</b>Entrega garantida</div>
-    <div class="sp-item"><b>PIX</b>Ativação automática</div>
+    <div class="sp-item"><b>30 DIAS</b>VIP mensal renovável</div>
+    <div class="sp-item"><b>ENTREGA IMEDIATA</b>Ativação em até 5 minutos</div>
+    <div class="sp-item"><b>PIX</b>Pagamento 100% seguro</div>
+    <div class="sp-item"><b>SUPORTE</b>Atendimento no Discord</div>
   </div>
 </div>
 
-<section id="planos"><div class="wrap"><div class="section-head"><span class="plate-tag">LOJA VIP</span><h2>Escolha seu poder — 30 dias</h2></div><div class="plans" id="plans-grid"></div></div></section>
+<section id="planos"><div class="wrap"><div class="section-head"><span class="plate-tag">LOJA</span><h2>Vips Mensais — 30 dias</h2></div><div class="plans" id="plans-grid"></div></div></section>
 
-<section id="como-funciona"><div class="wrap"><div class="section-head"><span class="plate-tag">02</span><h2>Como funciona</h2></div><div class="steps"><div class="step"><div class="n">01</div><h4>Escolha seu VIP mensal</h4><p>Todos duram 30 dias. Loga com Discord e paga com PIX. Simples e rápido.</p></div><div class="step"><div class="n">02</div><h4>Ativação relâmpago</h4><p>Nossa equipe recebe seu pedido no Discord na hora e libera em até 5 minutos.</p></div><div class="step"><div class="n">03</div><h4>Comece no topo</h4><p>Já que a cidade abriu hoje, quem tem VIP agora vai ser lembrado como fundador.</p></div></div></div></section>
+<section id="como-funciona"><div class="wrap"><div class="section-head"><span class="plate-tag">02</span><h2>Como funciona</h2></div><div class="steps"><div class="step"><div class="n">01</div><h4>Escolha seu VIP mensal</h4><p>Todos os VIPs duram 30 dias. Login com Discord e pagamento via PIX.</p></div><div class="step"><div class="n">02</div><h4>Ativação imediata</h4><p>Assim que pagar, nossa equipe é avisada automaticamente no Discord e libera seu VIP.</p></div><div class="step"><div class="n">03</div><h4>Domine a rua</h4><p>Entre na cidade com veículos exclusivos, bônus e respeito garantido.</p></div></div></div></section>
 
-<footer><div class="wrap"><b>Nova Paulista Roleplay</b> — Lançamento oficial. Os primeiros serão lendas.<br><br><a href="https://discord.com/channels/1544431545392308344/1544336229800091818" target="_blank">Discord Oficial</a> • VIPs 30 dias • 2026</div></footer>
+<footer><div class="wrap"><b>Nova Paulista Roleplay</b><br><br><a href="https://discord.com/channels/1544431545392308344/1544336229800091818" target="_blank">Discord Oficial</a> • VIPs mensais 30 dias</div></footer>
 
-<div class="overlay" id="buy-overlay"><div class="modal"><button class="close" id="buy-close">×</button><h3 id="buy-modal-title"></h3><div style="color:var(--off-dim);font-size:.85rem;margin-bottom:8px;" id="buy-modal-slogan"></div><div class="modal-price" id="buy-modal-price" style="color:var(--red);font-family:'Oswald',sans-serif;font-weight:700;font-size:1.6rem;margin:8px 0 16px;"></div><div id="step-auth"><div id="buyer-info-box" style="background:var(--asphalt-2);border:1px solid var(--line);padding:10px;border-radius:4px;margin-bottom:14px;font-size:.85rem;display:flex;align-items:center;gap:10px;"></div><div class="form-group"><label>Seu nick exato no MTA</label><input id="input-mta" placeholder="Ex: Joao_Silva"></div><button class="action-btn" id="proceed-to-pix">GERAR PIX — 30 DIAS</button><div style="font-size:.72rem;color:var(--off-dim);text-align:center;margin-top:10px;">🔒 VIP mensal válido por 30 dias • Renovável</div></div><div id="step-pix" style="display:none;"><div id="qrcode"></div><div class="copy-box"><input id="pix-code" readonly><button id="copy-btn">Copiar</button></div><div id="preview-embed" style="background:#2b2d31;border-radius:6px;padding:12px;font-size:.82rem;color:#dbdee1;margin-bottom:16px;"></div><button class="action-btn" id="finish-order-btn" style="background:var(--green);color:#fff;">JÁ PAGUEI — LIBERAR MEU VIP 30D</button></div></div></div>
+<div class="overlay" id="buy-overlay"><div class="modal"><button class="close" id="buy-close">×</button><h3 id="buy-modal-title"></h3><div style="color:var(--off-dim);font-size:.85rem;margin-bottom:8px;" id="buy-modal-slogan"></div><div id="buy-modal-price" style="color:var(--red);font-family:'Oswald',sans-serif;font-weight:700;font-size:1.6rem;margin:8px 0 16px;"></div><div id="step-auth"><div id="buyer-info-box" style="background:var(--asphalt-2);border:1px solid var(--line);padding:10px;border-radius:4px;margin-bottom:14px;font-size:.85rem;display:flex;align-items:center;gap:10px;"></div><div class="form-group"><label>Seu nick exato no MTA</label><input id="input-mta" placeholder="Ex: Joao_Silva"></div><button class="action-btn" id="proceed-to-pix">GERAR PIX — 30 DIAS</button></div><div id="step-pix" style="display:none;"><div id="qrcode"></div><div class="copy-box"><input id="pix-code" readonly><button id="copy-btn">Copiar</button></div><div id="preview-embed" style="background:#2b2d31;border-radius:6px;padding:12px;font-size:.82rem;color:#dbdee1;margin-bottom:16px;"></div><button class="action-btn" id="finish-order-btn" style="background:#2ecc71;color:#fff;">JÁ PAGUEI — LIBERAR MEU VIP</button></div></div></div>
 <div class="overlay" id="login-overlay"><div class="modal" style="max-width:340px;"><button class="close" id="login-close">×</button><h3>Admin</h3><div class="form-group"><label>Usuário</label><input id="admin-user" value="admin"></div><div class="form-group"><label>Senha</label><input id="admin-pass" type="password" value="novapaulistarp"></div><button class="action-btn" id="login-submit">Entrar</button></div></div>
 
 <script>
@@ -76,62 +68,13 @@ const DISCORD_CONFIG = {
 };
 
 const PLANS = [
-  { 
-    name: "Luxuria", accent: "#b06df0", icon: "💎", price: 15.00, duration: "30 dias",
-    slogan: "Para quem não nasceu pra ser básico. Chegue com classe.",
-    items: ["Presente-do-Guh x1", "Kit-Medico 50% x1", "Chat VIP exclusivo"], 
-    bonus: "R$ 10.000",
-    vehicles: [{ name: "Hornet 600", brand: "Honda" }],
-    cta: "QUERO SER LUXURIA — 30D"
-  },
-  { 
-    name: "Criminoso", accent: "#e23b3b", icon: "☠", price: 20.00, duration: "30 dias",
-    slogan: "A cidade teme quem tem atitude. Seja temido desde o dia 1.",
-    items: ["Presente-do-Guh x1", "Kit-Medico 50% x1", "Acesso a favela VIP"], 
-    bonus: "R$ 20.000",
-    vehicles: [{ name: "XRE 300", brand: "Honda" }],
-    cta: "VIRAR CRIMINOSO — 30D"
-  },
-  { 
-    name: "Visionario", accent: "#f2b705", icon: "👁", price: 25.00, duration: "30 dias",
-    slogan: "Enquanto eles pensam pequeno, você já domina o jogo.",
-    items: ["Presente-do-Matteo x1", "Kit-Medico 100% x1", "Prioridade na fila"], 
-    bonus: "R$ 30.000",
-    vehicles: [{ name: "Lexus LS 500", brand: "Toyota" }, { name: "R1200 GS", brand: "BMW" }],
-    cta: "SER VISIONARIO — 30D"
-  },
-  { 
-    name: "Marginal de Grife", accent: "#3ba7e0", icon: "🕶", price: 30.00, duration: "30 dias",
-    slogan: "O topo é pra poucos. Grife, poder e respeito em um só pacote.",
-    items: ["Presente-do-Matteo x1", "Kit-Medico 100% x1", "Tag exclusiva no Discord"], 
-    bonus: "R$ 50.000",
-    vehicles: [{ name: "Panamera Turbo", brand: "Porsche" }, { name: "R1200 GS", brand: "BMW" }],
-    cta: "DOMINAR A CIDADE — 30D"
-  },
-  { 
-    name: "Motos Exclusivas", accent: "#3ba7e0", icon: "🏍", price: 25.00, duration: "30 dias",
-    slogan: "Deixe todos comendo poeira. Velocidade que impõe respeito.",
-    items: ["2 Motos esportivas exclusivas", "Não perde com wipe", "Customização liberada"], 
-    bonus: "Entrega imediata",
-    vehicles: [{ name: "Yamaha R1M", brand: "Yamaha" }, { name: "CBR 1000RR", brand: "Honda" }],
-    cta: "ACELERAR AGORA — 30D"
-  },
-  { 
-    name: "Carros Exclusivos", accent: "#e23b3b", icon: "🏎", price: 30.00, duration: "30 dias",
-    slogan: "Quando você passa, todos olham. Quando você acelera, todos calam.",
-    items: ["2 Supercarros exclusivos", "Não perde com wipe", "Mais rápido da cidade"], 
-    bonus: "Entrega imediata",
-    vehicles: [{ name: "Ferrari 488 Pista", brand: "Ferrari" }, { name: "Huracan", brand: "Lamborghini" }],
-    cta: "PEGAR MEU SUPER — 30D"
-  },
-  { 
-    name: "Skin Personalizada", accent: "#ff6b35", icon: "👕", price: 35.00, duration: "30 dias",
-    slogan: "Seja único. Ninguém vai ter igual a sua. Sua marca na cidade.",
-    items: ["Skin 100% exclusiva e única", "Feita do seu jeito", "Pra você ou sua facção", "Ninguém mais terá"], 
-    bonus: "Entrega 48h",
-    vehicles: [],
-    cta: "CRIAR MINHA SKIN — 30D"
-  }
+  { name: "Luxuria", accent: "#b06df0", icon: "💎", price: 15.00, slogan: "Para quem não nasceu pra ser básico. Chegue com classe.", items: ["Presente-do-Guh x1", "Kit-Medico 50% x1", "Chat VIP exclusivo"], bonus: "R$ 10.000", vehicles: [{ name: "Hornet 600", brand: "Honda" }], cta: "QUERO SER LUXURIA — 30D" },
+  { name: "Criminoso", accent: "#e23b3b", icon: "☠", price: 20.00, slogan: "A cidade teme quem tem atitude. Seja temido.", items: ["Presente-do-Guh x1", "Kit-Medico 50% x1", "Acesso a favela VIP"], bonus: "R$ 20.000", vehicles: [{ name: "XRE 300", brand: "Honda" }], cta: "VIRAR CRIMINOSO — 30D" },
+  { name: "Visionario", accent: "#f2b705", icon: "👁", price: 25.00, slogan: "Enquanto eles pensam pequeno, você já domina o jogo.", items: ["Presente-do-Matteo x1", "Kit-Medico 100% x1", "Prioridade na fila"], bonus: "R$ 30.000", vehicles: [{ name: "Lexus LS 500", brand: "Toyota" }, { name: "R1200 GS", brand: "BMW" }], cta: "SER VISIONARIO — 30D" },
+  { name: "Marginal de Grife", accent: "#3ba7e0", icon: "🕶", price: 30.00, slogan: "O topo é pra poucos. Grife, poder e respeito em um só pacote.", items: ["Presente-do-Matteo x1", "Kit-Medico 100% x1", "Tag exclusiva no Discord"], bonus: "R$ 50.000", vehicles: [{ name: "Panamera Turbo", brand: "Porsche" }, { name: "R1200 GS", brand: "BMW" }], cta: "DOMINAR A CIDADE — 30D" },
+  { name: "Motos Exclusivas", accent: "#3ba7e0", icon: "🏍", price: 25.00, slogan: "Deixe todos comendo poeira. Velocidade que impõe respeito.", items: ["2 Motos esportivas exclusivas", "Não perde com wipe", "Customização liberada"], bonus: "Entrega imediata", vehicles: [{ name: "Yamaha R1M", brand: "Yamaha" }, { name: "CBR 1000RR", brand: "Honda" }], cta: "ACELERAR AGORA — 30D" },
+  { name: "Carros Exclusivos", accent: "#e23b3b", icon: "🏎", price: 30.00, slogan: "Quando você passa, todos olham. Quando você acelera, todos calam.", items: ["2 Supercarros exclusivos", "Não perde com wipe", "Mais rápido da cidade"], bonus: "Entrega imediata", vehicles: [{ name: "Ferrari 488 Pista", brand: "Ferrari" }, { name: "Huracan", brand: "Lamborghini" }], cta: "PEGAR MEU SUPER — 30D" },
+  { name: "Skin Personalizada", accent: "#ff6b35", icon: "👕", price: 35.00, slogan: "Seja único. Ninguém vai ter igual a sua. Sua marca na cidade.", items: ["Skin 100% exclusiva e única", "Feita do seu jeito", "Pra você ou sua facção"], bonus: "Entrega 48h", vehicles: [], cta: "CRIAR MINHA SKIN — 30D" }
 ];
 
 let currentUser=null;
@@ -144,20 +87,8 @@ function removerAcentos(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,
 const grid=document.getElementById("plans-grid");
 PLANS.forEach((pl,i)=>{
   const d=document.createElement("div");d.className="plan";d.style.setProperty("--accent",pl.accent);
-  let vehHTML="";
-  if(pl.vehicles.length>0){
-    vehHTML=`<div class="plan-vehicles"><div class="plan-label">🚀 MÁQUINAS INCLUSAS (30 DIAS)</div>${pl.vehicles.map(v=>`<div class="veh-item"><b>${v.name}</b><span>${v.brand}</span></div>`).join("")}</div>`;
-  } else {
-    vehHTML=`<div class="plan-vehicles"><div class="plan-label">👕 EXCLUSIVIDADE ABSOLUTA</div><div class="veh-item"><b>1 Skin ÚNICA no servidor</b><span>LENDÁRIO</span></div></div>`;
-  }
-  d.innerHTML=`
-    <div class="plan-head"><div class="plan-icon">${pl.icon}</div><h3>${pl.name}</h3></div>
-    <div class="duration-badge">⏱ ${pl.duration} • MENSAL • RENOVÁVEL</div>
-    <div class="slogan">"${pl.slogan}"</div>
-    <div class="plan-block"><div class="plan-label">O QUE VOCÊ GANHA</div><ul>${pl.items.map(x=>`<li>${x}</li>`).join("")}</ul></div>
-    <div class="plan-bonus"><span>💰 Bônus na conta</span><b>${pl.bonus}</b></div>
-    ${vehHTML}
-    <div class="plan-footer"><div class="price">R$ ${pl.price.toFixed(2).replace(".",",")} <span>/ mensal</span><div class="price-note">Válido por ${pl.duration} • Ativação imediata</div></div><button class="buy-btn" data-index="${i}">${pl.cta}</button></div>`;
+  let vehHTML=pl.vehicles.length>0?`<div class="plan-vehicles"><div class="plan-label">🚀 MÁQUINAS INCLUSAS (30 DIAS)</div>${pl.vehicles.map(v=>`<div class="veh-item"><b>${v.name}</b><span>${v.brand}</span></div>`).join("")}</div>`:`<div class="plan-vehicles"><div class="plan-label">👕 EXCLUSIVIDADE</div><div class="veh-item"><b>1 Skin ÚNICA</b><span>LENDÁRIO</span></div></div>`;
+  d.innerHTML=`<div class="plan-head"><div class="plan-icon">${pl.icon}</div><h3>${pl.name}</h3></div><div class="duration-badge">⏱ 30 DIAS • MENSAL</div><div class="slogan">"${pl.slogan}"</div><div class="plan-block"><div class="plan-label">O QUE VOCÊ GANHA</div><ul>${pl.items.map(x=>`<li>${x}</li>`).join("")}</ul></div><div class="plan-bonus"><span>💰 Bônus</span><b>${pl.bonus}</b></div>${vehHTML}<div class="plan-footer"><div class="price">R$ ${pl.price.toFixed(2).replace(".",",")} <span>/ mensal</span><div class="price-note">Válido por 30 dias • Renovável</div></div><button class="buy-btn" data-index="${i}">${pl.cta}</button></div>`;
   grid.appendChild(d);
 });
 
@@ -168,66 +99,42 @@ document.querySelectorAll(".buy-btn").forEach(b=>b.addEventListener("click",()=>
   selectedPlan=PLANS[b.dataset.index];
   document.getElementById("buy-modal-title").textContent=selectedPlan.name.toUpperCase()+" — 30 DIAS";
   document.getElementById("buy-modal-slogan").textContent=`"${selectedPlan.slogan}"`;
-  document.getElementById("buy-modal-price").textContent=`R$ ${selectedPlan.price.toFixed(2).replace(".",",")} / mensal • 30 dias`;
+  document.getElementById("buy-modal-price").textContent=`R$ ${selectedPlan.price.toFixed(2).replace(".",",")} / mensal`;
   const av=currentUser.avatar?`https://cdn.discordapp.com/avatars/${currentUser.id}/${currentUser.avatar}.png`:"";
-  document.getElementById("buyer-info-box").innerHTML=`<img src="${av}" style="width:28px;height:28px;border-radius:50%"><div><b>${currentUser.username}</b><br><small style="color:var(--off-dim)">VIP mensal • 30 dias • Entrega em 5 min</small></div>`;
+  document.getElementById("buyer-info-box").innerHTML=`<img src="${av}" style="width:28px;height:28px;border-radius:50%"><div><b>${currentUser.username}</b><br><small style="color:var(--off-dim)">VIP mensal • 30 dias</small></div>`;
   document.getElementById("input-mta").value="";
-  document.getElementById("step-auth").style.display="block";
-  document.getElementById("step-pix").style.display="none";
-  buyOverlay.classList.add("open");
+  document.getElementById("step-auth").style.display="block";document.getElementById("step-pix").style.display="none";buyOverlay.classList.add("open");
 }));
 document.getElementById("buy-close").onclick=()=>buyOverlay.classList.remove("open");
 buyOverlay.onclick=e=>{if(e.target===buyOverlay)buyOverlay.classList.remove("open")};
 document.getElementById("proceed-to-pix").onclick=()=>{
   const mta=document.getElementById("input-mta").value.trim();if(!mta)return alert("Digite seu nick MTA");
   const payload=gerarPix({pixKey:DISCORD_CONFIG.PIX_KEY,merchantName:DISCORD_CONFIG.MERCHANT_NAME,merchantCity:DISCORD_CONFIG.MERCHANT_CITY,amount:selectedPlan.price,txid:("NP"+selectedPlan.name).replace(/\s/g,"").toUpperCase()});
-  document.getElementById("pix-code").value=payload;
-  document.getElementById("qrcode").innerHTML="";
-  new QRCode(document.getElementById("qrcode"),{text:payload,width:180,height:180});
-  const vehText = selectedPlan.vehicles.length>0 ? selectedPlan.vehicles.map(v=>v.name).join(" + ") : "Skin exclusiva";
-  document.getElementById("preview-embed").innerHTML=`<b style="color:#00ff88;">✅ Quase lá!</b><br><br>📦 <b>${selectedPlan.name} — 30 dias</b><br>🏍 ${vehText}<br>⏱ Validade: 30 dias<br>🎮 Nick: ${mta}`;
-  document.getElementById("step-auth").style.display="none";
-  document.getElementById("step-pix").style.display="block";
-  window._lastMta = mta;
+  document.getElementById("pix-code").value=payload;document.getElementById("qrcode").innerHTML="";new QRCode(document.getElementById("qrcode"),{text:payload,width:180,height:180});
+  const vehText=selectedPlan.vehicles.length>0?selectedPlan.vehicles.map(v=>v.name).join(" + "):"Skin exclusiva";
+  document.getElementById("preview-embed").innerHTML=`<b style="color:#00ff88;">✅ Quase lá!</b><br><br>📦 <b>${selectedPlan.name} — 30 dias</b><br>🏍 ${vehText}<br>🎮 ${mta}`;
+  document.getElementById("step-auth").style.display="none";document.getElementById("step-pix").style.display="block";window._lastMta=mta;
 };
 document.getElementById("copy-btn").onclick=()=>{navigator.clipboard.writeText(document.getElementById("pix-code").value);document.getElementById("copy-btn").textContent="Copiado!";setTimeout(()=>document.getElementById("copy-btn").textContent="Copiar",1500)};
 document.getElementById("finish-order-btn").onclick=async()=>{
-  const mta = window._lastMta || "Jogador";
-  const btn=document.getElementById("finish-order-btn");btn.textContent="LIBERANDO...";btn.disabled=true;
+  const mta=window._lastMta||"Jogador";const btn=document.getElementById("finish-order-btn");btn.textContent="LIBERANDO...";btn.disabled=true;
   try{
-    const vehText = selectedPlan.vehicles.length>0 ? selectedPlan.vehicles.map(v=>`${v.name} (${v.brand})`).join(" + ") : "Skin exclusiva";
+    const vehText=selectedPlan.vehicles.length>0?selectedPlan.vehicles.map(v=>`${v.name} (${v.brand})`).join(" + "):"Skin exclusiva";
     const res=await fetch(DISCORD_CONFIG.WEBHOOK_URL,{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
+      method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({
-        username:"Nova Paulista Bot",
-        avatar_url:"https://i.imgur.com/D3haWTc.jpeg",
-        content:`@everyone`,
-        embeds:[{
-          title:`🔥 ${currentUser.username} entrou pra elite!`,
-          description:`**${mta}** acaba de garantir **${selectedPlan.name} (30 dias)** e já está no topo da Nova Paulista!`,
-          color: parseInt(selectedPlan.accent.replace("#",""),16),
-          fields:[
-            {name:"🎮 Player", value:`**${mta}**`, inline:true},
-            {name:"💬 Discord", value:`<@${currentUser.id}>`, inline:true},
-            {name:"👑 VIP", value:`**${selectedPlan.name} — 30 dias**\n${vehText}\n⏱ Mensal • Renovável`, inline:false}
-          ],
-          thumbnail:{url:`https://cdn.discordapp.com/avatars/${currentUser.id}/${currentUser.avatar}.png`},
-          timestamp:new Date().toISOString(),
-          footer:{text:"Nova Paulista RP • Lançamento • Seja um dos primeiros lendários"}
-        }]
+        username:"Nova Paulista Bot",avatar_url:"https://i.imgur.com/D3haWTc.jpeg",content:`@everyone`,
+        embeds:[{title:`🔥 ${currentUser.username} garantiu ${selectedPlan.name}!`,description:`**${mta}** acaba de comprar **${selectedPlan.name} (30 dias)**!`,color:parseInt(selectedPlan.accent.replace("#",""),16),fields:[{name:"🎮 Player",value:`**${mta}**`,inline:true},{name:"💬 Discord",value:`<@${currentUser.id}>`,inline:true},{name:"👑 VIP Mensal",value:`**${selectedPlan.name} — 30 dias**\n${vehText}`,inline:false}],thumbnail:{url:`https://cdn.discordapp.com/avatars/${currentUser.id}/${currentUser.avatar}.png`},timestamp:new Date().toISOString(),footer:{text:"Nova Paulista Roleplay • VIP 30 dias"}}]
       })
     });
-    if(res.ok) alert("🔥 FOI! 30 dias de VIP liberados no Discord!");
+    if(res.ok) alert("🔥 FOI! VIP 30 dias enviado pro Discord!");
     else alert("Erro: "+await res.text());
   }catch(e){alert(e.message)}
-  btn.textContent="JÁ PAGUEI — LIBERAR MEU VIP 30D";btn.disabled=false;buyOverlay.classList.remove("open");
+  btn.textContent="JÁ PAGUEI — LIBERAR MEU VIP";btn.disabled=false;buyOverlay.classList.remove("open");
 };
-
 document.getElementById("open-admin-modal").onclick=()=>document.getElementById("login-overlay").classList.add("open");
 document.getElementById("login-close").onclick=()=>document.getElementById("login-overlay").classList.remove("open");
 document.getElementById("login-submit").onclick=()=>{if(document.getElementById("admin-user").value==="admin"&&document.getElementById("admin-pass").value==="novapaulistarp"){document.getElementById("login-overlay").classList.remove("open");alert("Logado!")}else alert("Senha errada")};
-
 checkAuth();
 </script>
 </body>
