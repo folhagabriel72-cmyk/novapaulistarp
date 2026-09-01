@@ -6,57 +6,115 @@
 <title>Nova Paulista Roleplay — Loja Oficial</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-  :root{ --asphalt: #0e0f12; --asphalt-2: #17181c; --plate: #1b1c20; --line: #2e2f34; --red: #e23b3b; --red-dim: #7a2424; --off: #eeece6; --off-dim: #97949c; --green: #2ecc71; --discord-blue: #5865F2; }
-  *{ box-sizing: border-box; margin:0; padding:0; } body{ background: var(--asphalt); color: var(--off); font-family: 'Inter', sans-serif; line-height: 1.5; }
-  h1, h2, h3{ font-family: 'Oswald', sans-serif; } .wrap{ max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-  header{ border-bottom: 1px solid var(--line); padding: 18px 0; position:sticky; top:0; z-index:10; background:rgba(14,15,18,0.9); backdrop-filter:blur(10px); }
-  .nav{ display:flex; align-items:center; justify-content: space-between; } .brand{ display:flex; align-items:center; gap:12px; }
-  .brand img{ height: 42px; width:42px; border-radius: 50%; object-fit: cover; } .brand-text{ font-family:'Oswald',sans-serif; font-size: 1.1rem; font-weight:600; line-height:1.1; }
-  .brand-text span{ color: var(--red); } .brand-text small{ display:block; font-family:'Inter',sans-serif; font-weight:500; font-size:0.68rem; color: var(--off-dim); letter-spacing: 0.08em; }
-  .nav-right{ display:flex; align-items:center; gap: 16px; } .nav nav{ display:flex; gap: 16px; align-items:center; } .nav a{ color: var(--off-dim); text-decoration:none; font-size:0.9rem; } .nav a:hover{ color: var(--off); } .admin-link{ color: var(--red) !important; font-weight: 600; cursor: pointer; }
-  .discord-auth-btn{ background: var(--discord-blue); color: #fff; border: none; padding: 8px 16px; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: pointer; display:flex; align-items:center; gap: 8px; } .user-badge{ display:flex; align-items:center; gap: 10px; background: var(--plate); border: 1px solid var(--line); padding: 4px 12px 4px 4px; border-radius: 99px; font-size: 0.82rem; } .user-badge img{ width: 28px; height: 28px; border-radius: 50%; } .user-badge span{ color: var(--off); font-weight: 600; } .user-badge button{ background:var(--asphalt-2); border:1px solid var(--line); color: var(--off-dim); cursor:pointer; font-size:0.7rem; width:20px; height:20px; border-radius:50%; }
-  .hero{ padding: 78px 0 56px; text-align:center; position:relative; } .hero::before{ content:""; position:absolute; top: -60px; left:50%; transform: translateX(-50%); width: 620px; height: 320px; background: radial-gradient(ellipse at center, rgba(226,59,59,0.14), transparent 70%); pointer-events:none; } .hero-inner{ position:relative; } .hero .tag{ display:inline-block; border:1px solid var(--red-dim); color: var(--red); font-size: 0.78rem; padding: 5px 14px; border-radius: 3px; font-weight:600; margin-bottom: 22px; } .hero h1{ font-size: clamp(2.6rem, 7vw, 4.4rem); font-weight:700; line-height: 1.02; color: var(--off); } .hero h1 em{ font-style:normal; color: var(--red); } .hero p{ max-width: 480px; margin: 20px auto 0; color: var(--off-dim); font-size: 1.05rem; } .hero .duration{ display:inline-flex; align-items:center; gap:8px; margin-top: 26px; border: 1px solid var(--line); background: var(--plate); padding: 8px 16px; border-radius: 4px; font-size: 0.85rem; color: var(--off-dim); } .hero .duration b{ color: var(--red); font-family:'Oswald',sans-serif; }
-  .section-head{ display:flex; align-items:baseline; gap: 12px; margin-bottom: 34px; } .section-head .plate-tag{ font-family:'Oswald',sans-serif; font-weight:700; font-size: 0.85rem; background: var(--red); color: #17181b; padding: 3px 9px; border-radius: 2px; } .section-head h2{ font-size: 1.6rem; font-weight: 600; } section{ padding: 54px 0; }
-  .plans{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; } .plan{ --accent: var(--red); background: var(--plate); border: 1px solid var(--line); border-radius: 6px; padding: 22px 18px 20px; display:flex; flex-direction:column; } .plan-head{ display:flex; align-items:center; gap: 10px; margin-bottom: 14px; } .plan-icon{ width: 34px; height:34px; border-radius: 50%; background: color-mix(in srgb, var(--accent) 22%, transparent); border: 1px solid var(--accent); display:flex; align-items:center; justify-content:center; font-size: 1rem; } .plan h3{ font-size: 1.12rem; font-weight:600; color: var(--accent); } .plan-block{ margin-bottom: 12px; } .plan-label{ font-size: 0.66rem; font-weight:600; color: var(--off-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; } .plan ul{ list-style:none; } .plan ul li{ font-size: 0.83rem; color: var(--off); padding: 3px 0; display:flex; gap:7px; } .plan ul li::before{ content:"—"; color: var(--accent); } .plan-bonus{ background: var(--asphalt-2); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; font-size: 0.83rem; margin-bottom: 12px; } .plan-bonus b{ color: var(--accent); font-family:'Oswald',sans-serif; } .plan-vehicles{ font-size: 0.8rem; color: var(--off-dim); margin-bottom: 16px; } .plan .price{ font-family:'Oswald',sans-serif; font-size: 1.9rem; font-weight: 700; } .plan .price span{ font-size: 0.8rem; font-family:'Inter',sans-serif; font-weight:500; color: var(--off-dim); } .buy-btn{ width:100%; margin-top: 10px; background: var(--accent); color: #14151a; border: none; padding: 11px 0; border-radius: 4px; font-family:'Oswald',sans-serif; font-weight: 600; font-size: 0.9rem; cursor:pointer; }
-  .steps{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; } .step{ border-left: 2px solid var(--red-dim); padding: 4px 0 4px 18px; } .step .n{ font-family:'Oswald',sans-serif; color: var(--red); font-weight: 700; font-size: 0.85rem; } .step h4{ font-size: 1.02rem; font-weight:600; margin: 6px 0 6px; } .step p{ color: var(--off-dim); font-size: 0.9rem; } footer{ border-top: 1px solid var(--line); padding: 30px 0; text-align:center; color: var(--off-dim); font-size: 0.85rem; } footer a{ color: var(--red); text-decoration:none; }
-  .overlay{ position: fixed; inset: 0; background: rgba(6,6,8,0.86); display:none; align-items:center; justify-content:center; z-index: 200; padding: 20px; } .overlay.open{ display:flex; } .modal{ background: var(--plate); border: 1px solid var(--line); border-radius: 8px; max-width: 440px; width:100%; padding: 28px 26px 24px; position:relative; max-height: 90vh; overflow-y: auto; } .modal .close{ position:absolute; top: 14px; right: 16px; background:none; border:none; color: var(--off-dim); font-size: 1.3rem; cursor:pointer; } .modal h3{ font-size: 1.15rem; font-weight:600; } .modal .modal-price{ color: var(--red); font-family:'Oswald',sans-serif; font-weight:700; font-size: 1.5rem; margin: 4px 0 14px; } .form-group{ margin-bottom: 14px; } .form-group label{ display:block; font-size: 0.75rem; font-weight: 600; color: var(--off-dim); text-transform: uppercase; margin-bottom: 5px; } .form-group input{ width: 100%; background: var(--asphalt-2); border: 1px solid var(--line); border-radius: 4px; color: var(--off); font-size: 0.9rem; padding: 10px 12px; } #qrcode{ display:flex; justify-content:center; background: #fff; padding: 14px; border-radius: 6px; margin: 14px 0; } .copy-box{ display:flex; gap: 8px; margin-bottom: 16px; } .copy-box input{ flex:1; background: var(--asphalt-2); border: 1px solid var(--line); border-radius: 4px; color: var(--off-dim); font-size: 0.75rem; padding: 9px 10px; } .copy-box button{ background: var(--asphalt-2); border: 1px solid var(--line); color: var(--off); border-radius: 4px; padding: 0 14px; cursor:pointer; } .action-btn{ display:block; width:100%; text-align:center; background: var(--red); color: #14151a; padding: 12px 0; border-radius: 4px; font-family:'Oswald',sans-serif; font-weight:600; border:none; cursor:pointer; font-size: 1rem; } .discord-webhook-box{ background: #313338; border: 1px solid #232428; border-radius: 6px; padding: 12px; margin-bottom: 16px; font-size: 0.82rem; color: #dbdee1; } .discord-embed{ background: #2b2d31; border-left: 4px solid var(--green); border-radius: 4px; padding: 10px; margin-top: 6px; } .admin-modal{ max-width: 960px; } .admin-grid-stats{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 22px; } .stat-card{ background: var(--asphalt-2); border: 1px solid var(--line); border-radius: 6px; padding: 14px; } .stat-card .label{ font-size: 0.7rem; color: var(--off-dim); text-transform: uppercase; font-weight: 600; } .stat-card .value{ font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 700; } .admin-table{ width: 100%; border-collapse: collapse; font-size: 0.85rem; } .admin-table th, .admin-table td{ padding: 10px; text-align: left; border-bottom: 1px solid var(--line); } .badge-pendente{ background: #f39c1222; color: #f39c12; border: 1px solid #f39c12; padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; } .badge-pago{ background: #2ecc7122; color: var(--green); border: 1px solid var(--green); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; }
-  @media (max-width: 920px){ .plans{ grid-template-columns: repeat(2, 1fr); } } @media (max-width: 620px){ .plans, .steps{ grid-template-columns: 1fr; } }
+  :root{ --asphalt:#0e0f12; --asphalt-2:#17181c; --plate:#1b1c20; --line:#2e2f34; --red:#e23b3b; --red-dim:#7a2424; --off:#eeece6; --off-dim:#97949c; --green:#2ecc71; --discord-blue:#5865F2; }
+  *{box-sizing:border-box;margin:0;padding:0} body{background:var(--asphalt);color:var(--off);font-family:'Inter',sans-serif}
+  h1,h2,h3{font-family:'Oswald',sans-serif} .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--line);padding:18px 0;position:sticky;top:0;z-index:10;background:rgba(14,15,18,.92);backdrop-filter:blur(10px)}
+  .nav{display:flex;align-items:center;justify-content:space-between} .brand{display:flex;align-items:center;gap:12px}
+  .brand img{height:42px;width:42px;border-radius:50%} .brand-text{font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:600} .brand-text span{color:var(--red)} .brand-text small{display:block;font-size:.68rem;color:var(--off-dim);letter-spacing:.08em}
+  .nav-right{display:flex;align-items:center;gap:16px} .nav nav{display:flex;gap:16px} .nav a{color:var(--off-dim);text-decoration:none;font-size:.9rem} .admin-link{color:var(--red)!important;font-weight:600;cursor:pointer}
+  .discord-auth-btn{background:var(--discord-blue);color:#fff;border:none;padding:8px 16px;border-radius:4px;font-weight:600;font-size:.85rem;cursor:pointer;display:flex;align-items:center;gap:8px}
+  .user-badge{display:flex;align-items:center;gap:10px;background:var(--plate);border:1px solid var(--line);padding:4px 12px 4px 4px;border-radius:99px;font-size:.82rem} .user-badge img{width:28px;height:28px;border-radius:50%} .user-badge button{background:var(--asphalt-2);border:1px solid var(--line);color:var(--off-dim);width:20px;height:20px;border-radius:50%;cursor:pointer}
+  .hero{padding:78px 0 56px;text-align:center;position:relative} .hero::before{content:"";position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:620px;height:320px;background:radial-gradient(ellipse at center,rgba(226,59,59,.14),transparent 70%);pointer-events:none}
+  .hero .tag{display:inline-block;border:1px solid var(--red-dim);color:var(--red);font-size:.78rem;padding:5px 14px;border-radius:3px;font-weight:600;margin-bottom:22px}
+  .hero h1{font-size:clamp(2.6rem,7vw,4.4rem);font-weight:700;line-height:1.02} .hero h1 em{color:var(--red);font-style:normal} .hero p{max-width:480px;margin:20px auto 0;color:var(--off-dim);font-size:1.05rem} .hero .duration{display:inline-flex;gap:8px;margin-top:26px;border:1px solid var(--line);background:var(--plate);padding:8px 16px;border-radius:4px;font-size:.85rem;color:var(--off-dim)} .hero .duration b{color:var(--red);font-family:'Oswald',sans-serif}
+  .section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:34px} .section-head .plate-tag{font-family:'Oswald',sans-serif;font-weight:700;font-size:.85rem;background:var(--red);color:#17181b;padding:3px 9px;border-radius:2px} section{padding:54px 0}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px} 
+  .plan{--accent:var(--red);background:var(--plate);border:1px solid var(--line);border-radius:6px;padding:22px 18px 20px;display:flex;flex-direction:column;transition:.15s} 
+  .plan:hover{border-color:var(--accent);transform:translateY(-2px)} 
+  .plan-head{display:flex;align-items:center;gap:10px;margin-bottom:14px} 
+  .plan-icon{width:34px;height:34px;border-radius:50%;background:color-mix(in srgb,var(--accent) 22%,transparent);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+  .plan h3{font-size:1.12rem;font-weight:600;color:var(--accent)} 
+  .plan-block{margin-bottom:12px} 
+  .plan-label{font-size:.66rem;font-weight:600;color:var(--off-dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px} 
+  .plan ul{list-style:none} .plan ul li{font-size:.83rem;padding:3px 0;display:flex;gap:7px;color:var(--off)} .plan ul li::before{content:"—";color:var(--accent);flex-shrink:0}
+  .plan-bonus{background:var(--asphalt-2);border:1px solid var(--line);border-radius:4px;padding:8px 10px;font-size:.83rem;margin-bottom:12px} .plan-bonus b{color:var(--accent);font-family:'Oswald',sans-serif}
+  .plan-vehicles{background:rgba(226,59,59,0.06);border:1px dashed var(--line);border-radius:4px;padding:10px;margin-bottom:14px} 
+  .plan-vehicles .veh-item{display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:.82rem}
+  .plan-vehicles .veh-item b{color:var(--off);font-weight:600} .plan-vehicles .veh-item span{color:var(--off-dim);font-size:.75rem;background:var(--asphalt-2);padding:2px 6px;border-radius:3px;border:1px solid var(--line)}
+  .plan-footer{margin-top:auto} .plan .price{font-family:'Oswald',sans-serif;font-size:1.9rem;font-weight:700} .plan .price span{font-size:.8rem;font-family:'Inter',sans-serif;color:var(--off-dim)} .buy-btn{width:100%;margin-top:10px;background:var(--accent);color:#14151a;border:none;padding:11px 0;border-radius:4px;font-family:'Oswald',sans-serif;font-weight:600;font-size:.9rem;cursor:pointer}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px} .step{border-left:2px solid var(--red-dim);padding:4px 0 4px 18px} .step .n{font-family:'Oswald',sans-serif;color:var(--red);font-weight:700;font-size:.85rem} .step h4{font-size:1.02rem;font-weight:600;margin:6px 0} .step p{color:var(--off-dim);font-size:.9rem} footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--off-dim);font-size:.85rem} footer a{color:var(--red);text-decoration:none}
+  .overlay{position:fixed;inset:0;background:rgba(6,6,8,.86);display:none;align-items:center;justify-content:center;z-index:200;padding:20px} .overlay.open{display:flex} .modal{background:var(--plate);border:1px solid var(--line);border-radius:8px;max-width:440px;width:100%;padding:28px 26px 24px;position:relative;max-height:90vh;overflow-y:auto} .modal .close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--off-dim);font-size:1.3rem;cursor:pointer} .modal h3{font-size:1.15rem} .modal-price{color:var(--red);font-family:'Oswald',sans-serif;font-weight:700;font-size:1.5rem;margin:4px 0 14px} .form-group{margin-bottom:14px} .form-group label{display:block;font-size:.75rem;font-weight:600;color:var(--off-dim);text-transform:uppercase;margin-bottom:5px} .form-group input{width:100%;background:var(--asphalt-2);border:1px solid var(--line);border-radius:4px;color:var(--off);font-size:.9rem;padding:10px 12px} #qrcode{display:flex;justify-content:center;background:#fff;padding:14px;border-radius:6px;margin:14px 0} .copy-box{display:flex;gap:8px;margin-bottom:16px} .copy-box input{flex:1;background:var(--asphalt-2);border:1px solid var(--line);border-radius:4px;color:var(--off-dim);font-size:.75rem;padding:9px 10px} .copy-box button{background:var(--asphalt-2);border:1px solid var(--line);color:var(--off);border-radius:4px;padding:0 14px;cursor:pointer} .action-btn{display:block;width:100%;text-align:center;background:var(--red);color:#14151a;padding:12px 0;border-radius:4px;font-family:'Oswald',sans-serif;font-weight:600;border:none;cursor:pointer;font-size:1rem} .discord-webhook-box{background:#313338;border:1px solid #232428;border-radius:6px;padding:12px;margin-bottom:16px;font-size:.82rem;color:#dbdee1}
+  @media(max-width:920px){.plans{grid-template-columns:repeat(2,1fr)}} @media(max-width:620px){.plans,.steps{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap nav">
-    <div class="brand"><img src="https://i.imgur.com/D3haWTc.jpeg" alt="Nova Paulista"><div class="brand-text">NOVA <span>PAULISTA</span><small>MTA ROLEPLAY</small></div></div>
-    <div class="nav-right"><nav><a href="#planos">VIPs</a><a href="#como-funciona">Como funciona</a></nav><div id="auth-container"></div><a class="admin-link" id="open-admin-modal">Painel Admin</a></div>
+    <div class="brand"><img src="https://i.imgur.com/D3haWTc.jpeg"><div class="brand-text">NOVA <span>PAULISTA</span><small>MTA ROLEPLAY</small></div></div>
+    <div class="nav-right"><nav><a href="#planos">VIPs</a><a href="#como-funciona">Como funciona</a></nav><div id="auth-container"></div><a class="admin-link" id="open-admin-modal">Admin</a></div>
   </div>
 </header>
-<section class="hero"><div class="wrap hero-inner"><span class="tag">LOGIN DISCORD REAL ATIVO</span><h1>Escolha seu nível<br>e viva o <em>melhor</em>.</h1><p>Logue com seu Discord real e seu pedido vai pro chat geral com seu ID real.</p><div class="duration">Site oficial: <b>novapaulistarp.vercel.app</b></div></div></section>
+<section class="hero"><div class="wrap"><span class="tag">VEÍCULOS EXCLUSIVOS ATIVADOS</span><h1>Escolha seu nível<br>e viva o <em>melhor</em>.</h1><p>Agora com lista completa de veículos exclusivos de cada VIP.</p><div class="duration">Site: <b>novapaulistarp.vercel.app</b> | Veículos visíveis ✅</div></div></section>
 <section id="planos"><div class="wrap"><div class="section-head"><span class="plate-tag">LOJA</span><h2>Planos, Veículos & Skins</h2></div><div class="plans" id="plans-grid"></div></div></section>
-<section id="como-funciona"><div class="wrap"><div class="section-head"><span class="plate-tag">02</span><h2>Como funciona</h2></div><div class="steps"><div class="step"><div class="n">01</div><h4>Login Real Discord</h4><p>Seu avatar e ID real do Discord são capturados. Sem fake.</p></div><div class="step"><div class="n">02</div><h4>Pague com PIX</h4><p>PIX Copia e Cola automático pra felipemellocouto@outlook.com</p></div><div class="step"><div class="n">03</div><h4>Disparo REAL</h4><p>Webhook real no chat geral marcando seu @ com seu ID.</p></div></div></div></section>
-<footer><div class="wrap">Dúvidas? <a href="https://discord.com/channels/1544431545392308344/1544336229800091818" target="_blank">Discord Oficial</a></div></footer>
-<div class="overlay" id="buy-overlay"><div class="modal"><button class="close" id="buy-close">×</button><h3 id="buy-modal-title">Comprar Plano</h3><div class="modal-price" id="buy-modal-price">R$ 0,00</div><div id="step-auth"><div id="buyer-info-box" style="background:var(--asphalt-2); border:1px solid var(--line); padding:10px; border-radius:4px; margin-bottom:14px; font-size:0.85rem; display:flex; align-items:center; gap:10px;"></div><div class="form-group"><label>Nick Exato no MTA</label><input type="text" id="input-mta" placeholder="Ex: Joao_Silva"></div><button class="action-btn" id="proceed-to-pix">Gerar PIX</button></div><div id="step-pix" style="display:none;"><div id="qrcode"></div><div class="copy-box"><input type="text" id="pix-code" readonly><button id="copy-btn">Copiar</button></div><div class="discord-webhook-box"><div style="font-weight:700; margin-bottom:6px;">Preview do que vai pro Discord:</div><div class="discord-embed"><div id="preview-embed" style="font-size:0.78rem; color:#949ba4;"></div></div></div><button class="action-btn" id="finish-order-btn" style="background: var(--green); color:#fff;">Já Paguei — Enviar pro Discord</button></div></div></div>
-<div class="overlay" id="login-overlay"><div class="modal" style="max-width: 340px;"><button class="close" id="login-close">×</button><h3>Painel Restrito</h3><div class="form-group"><label>Usuário</label><input type="text" id="admin-user" value="admin"></div><div class="form-group"><label>Senha</label><input type="password" id="admin-pass"></div><button class="action-btn" id="login-submit">Entrar</button></div></div>
-<div class="overlay" id="admin-dashboard-overlay"><div class="modal admin-modal"><button class="close" id="admin-dashboard-close">×</button><h3>Painel de Vendas</h3><div class="admin-grid-stats"><div class="stat-card"><div class="label">Faturamento</div><div class="value" id="stat-revenue">R$ 0,00</div></div><div class="stat-card"><div class="label">Aprovadas</div><div class="value" id="stat-sales-count">0</div></div><div class="stat-card"><div class="label">Ticket</div><div class="value" id="stat-ticket">R$ 0,00</div></div><div class="stat-card"><div class="label">Pendentes</div><div class="value" id="stat-pending">0</div></div></div><table class="admin-table"><thead><tr><th>Data</th><th>Discord</th><th>MTA</th><th>Produto</th><th>Valor</th><th>Status</th></tr></thead><tbody id="sales-table-body"></tbody></table></div></div>
+<section id="como-funciona"><div class="wrap"><div class="section-head"><span class="plate-tag">02</span><h2>Como funciona</h2></div><div class="steps"><div class="step"><div class="n">01</div><h4>Login Real</h4><p>Avatar e ID real puxado da API do Discord.</p></div><div class="step"><div class="n">02</div><h4>PIX</h4><p>QR Code e Copia e Cola pro seu CPF.</p></div><div class="step"><div class="n">03</div><h4>Chat Geral</h4><p>Mensagem automática no canal com @ do comprador.</p></div></div></div></section>
+<footer><div class="wrap">Dúvidas? <a href="https://discord.com/channels/1544431545392308344/1544336229800091818" target="_blank">Abrir ticket no Discord</a></div></footer>
+
+<div class="overlay" id="buy-overlay"><div class="modal"><button class="close" id="buy-close">×</button><h3 id="buy-modal-title">Comprar</h3><div class="modal-price" id="buy-modal-price"></div><div id="step-auth"><div id="buyer-info-box" style="background:var(--asphalt-2);border:1px solid var(--line);padding:10px;border-radius:4px;margin-bottom:14px;font-size:.85rem;display:flex;align-items:center;gap:10px;"></div><div class="form-group"><label>Nick MTA (Ex: Joao_Silva)</label><input id="input-mta" placeholder="Joao_Silva"></div><button class="action-btn" id="proceed-to-pix">Gerar PIX</button></div><div id="step-pix" style="display:none;"><div id="qrcode"></div><div class="copy-box"><input id="pix-code" readonly><button id="copy-btn">Copiar</button></div><div class="discord-webhook-box"><div id="preview-embed"></div></div><button class="action-btn" id="finish-order-btn" style="background:var(--green);color:#fff;">Já Paguei — Enviar pro Discord</button></div></div></div>
+<div class="overlay" id="login-overlay"><div class="modal" style="max-width:340px;"><button class="close" id="login-close">×</button><h3>Admin</h3><div class="form-group"><label>Usuário</label><input id="admin-user" value="admin"></div><div class="form-group"><label>Senha</label><input id="admin-pass" type="password"></div><button class="action-btn" id="login-submit">Entrar</button></div></div>
+<div class="overlay" id="admin-dashboard-overlay"><div class="modal" style="max-width:700px;"><button class="close" id="admin-dashboard-close">×</button><h3>Vendas</h3><div id="stats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0;"></div><table style="width:100%;border-collapse:collapse;font-size:.85rem;"><thead><tr><th style="text-align:left;padding:8px;border-bottom:1px solid #2e2f34">Data</th><th style="text-align:left;padding:8px;border-bottom:1px solid #2e2f34">Discord</th><th style="text-align:left;padding:8px;border-bottom:1px solid #2e2f34">MTA</th><th style="text-align:left;padding:8px;border-bottom:1px solid #2e2f34">Produto</th><th style="text-align:left;padding:8px;border-bottom:1px solid #2e2f34">Status</th></tr></thead><tbody id="sales-table-body"></tbody></table></div></div>
+
 <script>
 const DISCORD_CONFIG = {
-  CLIENT_ID: "1544431545392308344", // ID QUE VOCÊ MANDOU - SE FOR O CLIENT ID MESMO VAI FUNCIONAR
+  CLIENT_ID: "1544431545392308344",
   REDIRECT_URI: "https://novapaulistarp.vercel.app/",
-  WEBHOOK_URL: "", // COLOQUE SEU WEBHOOK AQUI DEPOIS
+  WEBHOOK_URL: "https://discord.com/api/webhooks/1544436349376004136/NVh-TeADS_jwHxorWfnNrDlM5p70V2QrF4uCm_GHncAyPDVDyi-8kneBXjKTdAgq4WGK",
   PIX_KEY: "felipemellocouto@outlook.com",
   MERCHANT_NAME: "FELIPE MELLO COUTO",
   MERCHANT_CITY: "SAO PAULO"
 };
 
 const PLANS = [
-  { name: "Luxuria", accent: "#b06df0", icon: "◆", price: 15.00, items: ["Presente-do-Guh x1", "Kit-Medico 50% x1"], bonus: "R$ 10.000", vehicles: [{ name: "Hornet", brand: "Honda" }] },
-  { name: "Criminoso", accent: "#e23b3b", icon: "☠", price: 20.00, items: ["Presente-do-Guh x1", "Kit-Medico 50% x1"], bonus: "R$ 20.000", vehicles: [{ name: "XRE", brand: "Honda" }] },
-  { name: "Visionario", accent: "#f2b705", icon: "♛", price: 25.00, items: ["Presente-do-Matteo x1", "Kit-Medico 100% x1"], bonus: "R$ 30.000", vehicles: [{ name: "Lexus LS", brand: "Toyota" }, { name: "R1200", brand: "BMW" }] },
-  { name: "Marginal de Grife", accent: "#3ba7e0", icon: "♠", price: 30.00, items: ["Presente-do-Matteo x1", "Kit-Medico 100% x1"], bonus: "R$ 50.000", vehicles: [{ name: "Panamera", brand: "Porsche" }, { name: "R1200", brand: "BMW" }] },
-  { name: "Motos Exclusivas", accent: "#3ba7e0", icon: "🏍", price: 25.00, items: ["Acesso a moto esportiva exclusiva"], bonus: "Nenhum", vehicles: [{ name: "Yamaha R1", brand: "Yamaha" }] },
-  { name: "Carros Exclusivos", accent: "#e23b3b", icon: "🚗", price: 30.00, items: ["Acesso ao carro esportivo exclusivo"], bonus: "Nenhum", vehicles: [{ name: "Ferrari Esportiva", brand: "Ferrari" }] },
-  { name: "Skin Personalizada", accent: "#e23b3b", icon: "👕", price: 35.00, items: ["Skins únicas e exclusivas"], bonus: "Entrega Rápida", vehicles: [] }
+  { 
+    name: "Luxuria", accent: "#b06df0", icon: "💎", price: 15.00, 
+    items: ["Presente-do-Guh x1", "Kit-Medico 50% x1"], 
+    bonus: "R$ 10.000",
+    vehicles: [{ name: "Hornet 600", brand: "Honda" }],
+    vehiclesLabel: "Veículo exclusivo"
+  },
+  { 
+    name: "Criminoso", accent: "#e23b3b", icon: "☠", price: 20.00, 
+    items: ["Presente-do-Guh x1", "Kit-Medico 50% x1"], 
+    bonus: "R$ 20.000",
+    vehicles: [{ name: "XRE 300", brand: "Honda" }],
+    vehiclesLabel: "Veículo exclusivo"
+  },
+  { 
+    name: "Visionario", accent: "#f2b705", icon: "👁", price: 25.00, 
+    items: ["Presente-do-Matteo x1", "Kit-Medico 100% x1"], 
+    bonus: "R$ 30.000",
+    vehicles: [{ name: "Lexus LS 500", brand: "Toyota" }, { name: "R1200 GS", brand: "BMW" }],
+    vehiclesLabel: "Veículos exclusivos"
+  },
+  { 
+    name: "Marginal de Grife", accent: "#3ba7e0", icon: "🕶", price: 30.00, 
+    items: ["Presente-do-Matteo x1", "Kit-Medico 100% x1"], 
+    bonus: "R$ 50.000",
+    vehicles: [{ name: "Panamera Turbo", brand: "Porsche" }, { name: "R1200 GS", brand: "BMW" }],
+    vehiclesLabel: "Veículos exclusivos"
+  },
+  { 
+    name: "Motos Exclusivas", accent: "#3ba7e0", icon: "🏍", price: 25.00, 
+    items: ["Acesso liberado a moto esportiva exclusiva", "Não perde com wipe"], 
+    bonus: "Entrega imediata",
+    vehicles: [{ name: "Yamaha R1M", brand: "Yamaha" }, { name: "CBR 1000RR", brand: "Honda" }],
+    vehiclesLabel: "Motos inclusas"
+  },
+  { 
+    name: "Carros Exclusivos", accent: "#e23b3b", icon: "🏎", price: 30.00, 
+    items: ["Acesso liberado a carro esportivo exclusivo", "Não perde com wipe"], 
+    bonus: "Entrega imediata",
+    vehicles: [{ name: "Ferrari 488 Pista", brand: "Ferrari" }, { name: "Lamborghini Huracan", brand: "Lamborghini" }],
+    vehiclesLabel: "Carros inclusos"
+  },
+  { 
+    name: "Skin Personalizada", accent: "#ff6b35", icon: "👕", price: 35.00, 
+    items: ["Skin única e exclusiva", "Personalização total", "Para você ou sua facção", "Feita sob medida"], 
+    bonus: "Entrega em 48h",
+    vehicles: [],
+    vehiclesLabel: "Detalhes"
+  }
 ];
 
 let salesData = JSON.parse(localStorage.getItem("nova_paulista_sales_v2")) || [];
@@ -64,43 +122,127 @@ let currentUser = null;
 function saveSales(){ localStorage.setItem("nova_paulista_sales_v2", JSON.stringify(salesData)); }
 
 async function fetchDiscordUser(token){
-  try{ const res = await fetch("https://discord.com/api/users/@me", { headers: { Authorization: `Bearer ${token}` } }); if(!res.ok) throw new Error(); return await res.json(); }catch(e){ return null; }
+  try{ const r = await fetch("https://discord.com/api/users/@me", { headers: { Authorization: `Bearer ${token}` } }); if(!r.ok) throw new Error(); return await r.json(); }catch{ return null; }
 }
 async function checkAuth(){
   if(window.location.hash.includes("access_token")){
-    const params = new URLSearchParams(window.location.hash.substring(1)); const token = params.get("access_token");
-    if(token){ localStorage.setItem("discord_access_token", token); history.replaceState(null, "", window.location.pathname); const user = await fetchDiscordUser(token); if(user){ currentUser = {...user, token}; localStorage.setItem("nova_paulista_discord_user_v2", JSON.stringify(currentUser)); } }
-  } else { const token = localStorage.getItem("discord_access_token"); const cached = JSON.parse(localStorage.getItem("nova_paulista_discord_user_v2") || "null"); if(token && cached){ const fresh = await fetchDiscordUser(token); if(fresh) currentUser = {...fresh, token}; else logoutDiscord(); } }
+    const p = new URLSearchParams(window.location.hash.substring(1)); const token = p.get("access_token");
+    if(token){ localStorage.setItem("discord_access_token", token); history.replaceState(null,"",window.location.pathname); const u = await fetchDiscordUser(token); if(u){ currentUser={...u,token}; localStorage.setItem("nova_paulista_discord_user_v2", JSON.stringify(currentUser)); } }
+  } else { const t=localStorage.getItem("discord_access_token"); const c=JSON.parse(localStorage.getItem("nova_paulista_discord_user_v2")||"null"); if(t&&c){ const f=await fetchDiscordUser(t); if(f) currentUser={...f,token:t}; else logoutDiscord(); } }
   updateAuthUI();
 }
 function updateAuthUI(){
-  const c = document.getElementById("auth-container");
+  const c=document.getElementById("auth-container");
   if(currentUser){
-    const avatarUrl = currentUser.avatar ? `https://cdn.discordapp.com/avatars/${currentUser.id}/${currentUser.avatar}.png` : `https://cdn.discordapp.com/embed/avatars/0.png`;
-    c.innerHTML = `<div class="user-badge"><img src="${avatarUrl}"><span>${currentUser.username}</span><button onclick="logoutDiscord()">✕</button></div>`;
+    const av=currentUser.avatar ? `https://cdn.discordapp.com/avatars/${currentUser.id}/${currentUser.avatar}.png` : `https://cdn.discordapp.com/embed/avatars/0.png`;
+    c.innerHTML=`<div class="user-badge"><img src="${av}"><span>${currentUser.username}</span><button onclick="logoutDiscord()">✕</button></div>`;
   } else {
-    c.innerHTML = `<button class="discord-auth-btn" id="login-discord-btn">Entrar com Discord</button>`;
-    document.getElementById("login-discord-btn").addEventListener("click", ()=>{ window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CONFIG.CLIENT_ID}&redirect_uri=${encodeURIComponent(DISCORD_CONFIG.REDIRECT_URI)}&response_type=token&scope=identify%20email`; });
+    c.innerHTML=`<button class="discord-auth-btn" id="login-discord-btn">Entrar com Discord</button>`;
+    document.getElementById("login-discord-btn").onclick=()=>{ window.location.href=`https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CONFIG.CLIENT_ID}&redirect_uri=${encodeURIComponent(DISCORD_CONFIG.REDIRECT_URI)}&response_type=token&scope=identify%20email`; };
   }
 }
-window.logoutDiscord = function(){ currentUser=null; localStorage.removeItem("discord_access_token"); localStorage.removeItem("nova_paulista_discord_user_v2"); updateAuthUI(); }
+window.logoutDiscord=()=>{ currentUser=null; localStorage.removeItem("discord_access_token"); localStorage.removeItem("nova_paulista_discord_user_v2"); updateAuthUI(); }
 
-function removerAcentos(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"")} function tlv(id,v){return id+v.length.toString().padStart(2,"0")+v} function crc16(p){let c=0xFFFF; for(let i=0;i<p.length;i++){c^=p.charCodeAt(i)<<8; for(let j=0;j<8;j++) c=(c&0x8000)?((c<<1)^0x1021):(c<<1),c&=0xFFFF} return c.toString(16).toUpperCase().padStart(4,"0")} function gerarPayloadPix({pixKey,merchantName,merchantCity,amount,txid}){const n=removerAcentos(merchantName).toUpperCase().slice(0,25),ci=removerAcentos(merchantCity).toUpperCase().slice(0,15),id=(txid||"***").slice(0,25); let pay=""; pay+=tlv("00","01"); const mi=tlv("00","br.gov.bcb.pix")+tlv("01",pixKey); pay+=tlv("26",mi); pay+=tlv("52","0000"); pay+=tlv("53","986"); pay+=tlv("54",amount.toFixed(2)); pay+=tlv("58","BR"); pay+=tlv("59",n); pay+=tlv("60",ci); pay+=tlv("62",tlv("05",id)); pay+="6304"; pay+=crc16(pay); return pay;}
+function removerAcentos(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"")} function tlv(i,v){return i+v.length.toString().padStart(2,"0")+v} function crc16(p){let c=0xFFFF;for(let i=0;i<p.length;i++){c^=p.charCodeAt(i)<<8;for(let j=0;j<8;j++)c=(c&0x8000)?((c<<1)^0x1021):(c<<1),c&=0xFFFF}return c.toString(16).toUpperCase().padStart(4,"0")} function gerarPix(a){const n=removerAcentos(a.merchantName).toUpperCase().slice(0,25),ci=removerAcentos(a.merchantCity).toUpperCase().slice(0,15);let pay="";pay+=tlv("00","01");const mi=tlv("00","br.gov.bcb.pix")+tlv("01",a.pixKey);pay+=tlv("26",mi);pay+=tlv("52","0000");pay+=tlv("53","986");pay+=tlv("54",a.amount.toFixed(2));pay+=tlv("58","BR");pay+=tlv("59",n);pay+=tlv("60",ci);pay+=tlv("62",tlv("05",(a.txid||"***").slice(0,25)));pay+="6304";pay+=crc16(pay);return pay}
 
-const grid=document.getElementById("plans-grid"); PLANS.forEach((plan,i)=>{const card=document.createElement("div"); card.className="plan"; card.style.setProperty("--accent",plan.accent); card.innerHTML=`<div class="plan-head"><div class="plan-icon">${plan.icon}</div><h3>${plan.name}</h3></div><div class="plan-block"><div class="plan-label">Benefícios</div><ul>${plan.items.map(x=>`<li>${x}</li>`).join("")}</ul></div><div class="plan-bonus">Bônus: <b>${plan.bonus}</b></div><div class="plan-footer"><div class="price">R$ ${plan.price.toFixed(2).replace(".",",")} <span>/ único</span></div><button class="buy-btn" data-index="${i}">Comprar</button></div>`; grid.appendChild(card);});
+const grid=document.getElementById("plans-grid");
+PLANS.forEach((pl,i)=>{
+  const d=document.createElement("div");d.className="plan";d.style.setProperty("--accent",pl.accent);
+  
+  let vehiclesHTML = "";
+  if(pl.vehicles.length > 0){
+    const vehItems = pl.vehicles.map(v=>`<div class="veh-item"><b>${v.name}</b><span>${v.brand}</span></div>`).join("");
+    vehiclesHTML = `<div class="plan-vehicles"><div class="plan-label">${pl.vehiclesLabel}</div>${vehItems}</div>`;
+  } else {
+    vehiclesHTML = `<div class="plan-vehicles"><div class="plan-label">Incluso</div><div class="veh-item"><b>Entrega sob medida</b><span>Exclusivo</span></div><div style="font-size:.75rem;color:var(--off-dim);margin-top:6px;">Skin personalizada para você ou facção inteira</div></div>`;
+  }
 
-const buyOverlay=document.getElementById("buy-overlay"); let selectedPlan=null, currentOrder=null;
-document.querySelectorAll(".buy-btn").forEach(b=>b.addEventListener("click",()=>{ if(!currentUser){ alert("Logue com Discord primeiro!"); window.location.href=`https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CONFIG.CLIENT_ID}&redirect_uri=${encodeURIComponent(DISCORD_CONFIG.REDIRECT_URI)}&response_type=token&scope=identify%20email`; return;} selectedPlan=PLANS[b.dataset.index]; document.getElementById("buy-modal-title").textContent=selectedPlan.name; document.getElementById("buy-modal-price").textContent=`R$ ${selectedPlan.price.toFixed(2)}`; document.getElementById("buyer-info-box").innerHTML=`Logado como <b>${currentUser.username}</b> (${currentUser.id})`; document.getElementById("step-auth").style.display="block"; document.getElementById("step-pix").style.display="none"; buyOverlay.classList.add("open"); }));
-document.getElementById("buy-close").addEventListener("click",()=>buyOverlay.classList.remove("open"));
-document.getElementById("proceed-to-pix").addEventListener("click",()=>{ const mta=document.getElementById("input-mta").value.trim(); if(!mta) return alert("Digite seu nick MTA"); const now=new Date(); currentOrder={id:Date.now(), date:now.toLocaleString("pt-BR"), discord:currentUser.username, discordId:currentUser.id, mta, plan:selectedPlan.name, price:selectedPlan.price, status:"Pendente"}; salesData.unshift(currentOrder); saveSales(); const payload=gerarPayloadPix({pixKey:DISCORD_CONFIG.PIX_KEY, merchantName:DISCORD_CONFIG.MERCHANT_NAME, merchantCity:DISCORD_CONFIG.MERCHANT_CITY, amount:selectedPlan.price, txid:("NP"+selectedPlan.name).replace(/\s/g,"").toUpperCase()}); document.getElementById("pix-code").value=payload; document.getElementById("qrcode").innerHTML=""; new QRCode(document.getElementById("qrcode"), {text:payload, width:180, height:180}); document.getElementById("preview-embed").innerHTML=`<b>${mta}</b> comprou <b>${selectedPlan.name}</b> por R$ ${selectedPlan.price}<br>Discord: ${currentUser.username} (${currentUser.id})`; document.getElementById("step-auth").style.display="none"; document.getElementById("step-pix").style.display="block"; });
-document.getElementById("copy-btn").addEventListener("click",()=>{ navigator.clipboard.writeText(document.getElementById("pix-code").value); });
-document.getElementById("finish-order-btn").addEventListener("click", async()=>{
-  if(currentOrder){ currentOrder.status="Aprovado"; saveSales(); if(DISCORD_CONFIG.WEBHOOK_URL.startsWith("https://discord.com/api/webhooks/")){ try{ await fetch(DISCORD_CONFIG.WEBHOOK_URL,{method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({ username:"Nova Paulista Bot", avatar_url:"https://i.imgur.com/D3haWTc.jpeg", embeds:[{ title:"💸 NOVA VENDA APROVADA!", color:3066993, fields:[{name:"MTA", value:currentOrder.mta, inline:true},{name:"Discord", value:`<@${currentOrder.discordId}> ${currentOrder.discord}`, inline:true},{name:"Produto", value:currentOrder.plan, inline:true},{name:"Valor", value:`R$ ${currentOrder.price}`, inline:true}], timestamp:new Date().toISOString()}] })}); }catch(e){} } alert("Confirmado! Se tiver webhook configurado, já foi pro Discord."); window.open("https://discord.com/channels/1544431545392308344/1544336229800091818","_blank"); buyOverlay.classList.remove("open"); }
+  d.innerHTML=`
+    <div class="plan-head"><div class="plan-icon">${pl.icon}</div><h3>${pl.name}</h3></div>
+    <div class="plan-block"><div class="plan-label">Itens / Benefícios</div><ul>${pl.items.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+    <div class="plan-bonus">Bônus de ativação: <b>${pl.bonus}</b></div>
+    ${vehiclesHTML}
+    <div class="plan-footer"><div class="price">R$ ${pl.price.toFixed(2).replace(".",",")} <span>/ único</span></div><button class="buy-btn" data-index="${i}">Comprar ${pl.name}</button></div>`;
+  grid.appendChild(d);
 });
-document.getElementById("open-admin-modal").addEventListener("click",()=>document.getElementById("login-overlay").classList.add("open"));
-document.getElementById("login-close").addEventListener("click",()=>document.getElementById("login-overlay").classList.remove("open"));
-document.getElementById("login-submit").addEventListener("click",()=>{ if(document.getElementById("admin-user").value==="admin" && document.getElementById("admin-pass").value==="novapaulistarp"){ document.getElementById("login-overlay").classList.remove("open"); document.getElementById("admin-dashboard-overlay").classList.add("open"); const tb=document.getElementById("sales-table-body"); tb.innerHTML=""; salesData.forEach(s=>{ const tr=document.createElement("tr"); tr.innerHTML=`<td>${s.date}</td><td>${s.discord}<br><small>${s.discordId}</small></td><td>${s.mta}</td><td>${s.plan}</td><td>R$ ${s.price}</td><td>${s.status}</td>`; tb.appendChild(tr); }); document.getElementById("stat-revenue").textContent="R$ "+salesData.filter(s=>s.status==="Aprovado").reduce((a,b)=>a+b.price,0).toFixed(2); document.getElementById("stat-sales-count").textContent=salesData.filter(s=>s.status==="Aprovado").length; } else alert("Senha errada"); });
-document.getElementById("admin-dashboard-close").addEventListener("click",()=>document.getElementById("admin-dashboard-overlay").classList.remove("open"));
+
+let selectedPlan=null, currentOrder=null;
+const buyOverlay=document.getElementById("buy-overlay");
+document.querySelectorAll(".buy-btn").forEach(b=>b.addEventListener("click",()=>{
+  if(!currentUser){ alert("Você precisa logar com Discord primeiro!"); window.location.href=`https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CONFIG.CLIENT_ID}&redirect_uri=${encodeURIComponent(DISCORD_CONFIG.REDIRECT_URI)}&response_type=token&scope=identify%20email`; return;}
+  selectedPlan=PLANS[b.dataset.index];
+  document.getElementById("buy-modal-title").textContent=selectedPlan.name;
+  document.getElementById("buy-modal-price").textContent=`R$ ${selectedPlan.price.toFixed(2)}`;
+  const av=currentUser.avatar ? `https://cdn.discordapp.com/avatars/${currentUser.id}/${currentUser.avatar}.png` : "";
+  document.getElementById("buyer-info-box").innerHTML=`<img src="${av}" style="width:28px;height:28px;border-radius:50%"><b>${currentUser.username}</b> (${currentUser.id})`;
+  document.getElementById("input-mta").value="";
+  document.getElementById("step-auth").style.display="block";
+  document.getElementById("step-pix").style.display="none";
+  buyOverlay.classList.add("open");
+}));
+document.getElementById("buy-close").onclick=()=>buyOverlay.classList.remove("open");
+buyOverlay.onclick=e=>{ if(e.target===buyOverlay) buyOverlay.classList.remove("open") };
+document.getElementById("proceed-to-pix").onclick=()=>{
+  const mta=document.getElementById("input-mta").value.trim(); if(!mta) return alert("Digite seu nick MTA");
+  currentOrder={id:Date.now(), date:new Date().toLocaleString("pt-BR"), discord:currentUser.username, discordId:currentUser.id, mta, plan:selectedPlan.name, price:selectedPlan.price, status:"Pendente"};
+  salesData.unshift(currentOrder); saveSales();
+  const payload=gerarPix({pixKey:DISCORD_CONFIG.PIX_KEY, merchantName:DISCORD_CONFIG.MERCHANT_NAME, merchantCity:DISCORD_CONFIG.MERCHANT_CITY, amount:selectedPlan.price, txid:("NP"+selectedPlan.name).replace(/\s/g,"").toUpperCase()});
+  document.getElementById("pix-code").value=payload;
+  document.getElementById("qrcode").innerHTML="";
+  new QRCode(document.getElementById("qrcode"),{text:payload,width:180,height:180});
+  const vehList = selectedPlan.vehicles.map(v=>v.name).join(", ") || "Skin personalizada";
+  document.getElementById("preview-embed").innerHTML=`<b>Preview Discord:</b><br>🛒 <b>${mta}</b> comprou <b>${selectedPlan.name}</b> (${vehList})<br>💰 R$ ${selectedPlan.price}<br>👤 ${currentUser.username} (<@${currentUser.id}>)`;
+  document.getElementById("step-auth").style.display="none"; document.getElementById("step-pix").style.display="block";
+};
+document.getElementById("copy-btn").onclick=()=>{ navigator.clipboard.writeText(document.getElementById("pix-code").value); document.getElementById("copy-btn").textContent="Copiado!"; setTimeout(()=>document.getElementById("copy-btn").textContent="Copiar",1500); };
+document.getElementById("finish-order-btn").onclick=async()=>{
+  if(!currentOrder) return;
+  currentOrder.status="Aprovado"; saveSales();
+  const btn=document.getElementById("finish-order-btn"); btn.textContent="Enviando..."; btn.disabled=true;
+  try{
+    const vehText = selectedPlan.vehicles.length>0 ? selectedPlan.vehicles.map(v=>`${v.name} (${v.brand})`).join(" + ") : "Skin Personalizada";
+    const res = await fetch(DISCORD_CONFIG.WEBHOOK_URL, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({
+        username:"Nova Paulista Bot",
+        avatar_url:"https://i.imgur.com/D3haWTc.jpeg",
+        content:`@everyone`,
+        embeds:[{
+          title:"💸 NOVA VENDA APROVADA!",
+          color: parseInt(selectedPlan.accent.replace("#",""),16),
+          fields:[
+            {name:"🎮 Nick MTA", value:`**${currentOrder.mta}**`, inline:true},
+            {name:"💬 Discord", value:`<@${currentOrder.discordId}>\n${currentOrder.discord}`, inline:true},
+            {name:"📦 Produto", value:`**${currentOrder.plan}**\n${vehText}`, inline:false},
+            {name:"💰 Valor", value:`**R$ ${currentOrder.price.toFixed(2).replace(".",",")}**`, inline:true},
+            {name:"🆔 ID Discord", value:`${currentOrder.discordId}`, inline:true}
+          ],
+          thumbnail:{url:`https://cdn.discordapp.com/avatars/${currentUser.id}/${currentUser.avatar}.png`},
+          timestamp:new Date().toISOString(),
+          footer:{text:"Nova Paulista Roleplay - Loja Oficial"}
+        }]
+      })
+    });
+    if(res.ok) alert("✅ SUCESSO! Foi pro chat geral com nome dos veículos!");
+    else alert("Erro no webhook: "+await res.text());
+  }catch(e){ alert("Erro: "+e.message); }
+  btn.textContent="Já Paguei — Enviar pro Discord"; btn.disabled=false;
+  buyOverlay.classList.remove("open");
+};
+
+document.getElementById("open-admin-modal").onclick=()=>document.getElementById("login-overlay").classList.add("open");
+document.getElementById("login-close").onclick=()=>document.getElementById("login-overlay").classList.remove("open");
+document.getElementById("login-submit").onclick=()=>{
+  if(document.getElementById("admin-user").value==="admin" && document.getElementById("admin-pass").value==="novapaulistarp"){
+    document.getElementById("login-overlay").classList.remove("open");
+    document.getElementById("admin-dashboard-overlay").classList.add("open");
+    const tb=document.getElementById("sales-table-body"); tb.innerHTML="";
+    salesData.forEach(s=>{ const tr=document.createElement("tr"); tr.innerHTML=`<td style="padding:8px;border-bottom:1px solid #2e2f34">${s.date}</td><td style="padding:8px;border-bottom:1px solid #2e2f34">${s.discord}</td><td style="padding:8px;border-bottom:1px solid #2e2f34">${s.mta}</td><td style="padding:8px;border-bottom:1px solid #2e2f34">${s.plan}</td><td style="padding:8px;border-bottom:1px solid #2e2f34">${s.status}</td>`; tb.appendChild(tr); });
+    document.getElementById("stats").innerHTML=`<div style="background:#17181c;padding:10px;border-radius:6px">Faturamento: R$ ${salesData.filter(s=>s.status==="Aprovado").reduce((a,b)=>a+b.price,0).toFixed(2)}</div><div style="background:#17181c;padding:10px;border-radius:6px">Vendas: ${salesData.filter(s=>s.status==="Aprovado").length}</div><div style="background:#17181c;padding:10px;border-radius:6px">Pendentes: ${salesData.filter(s=>s.status==="Pendente").length}</div>`;
+  } else alert("Senha errada");
+};
+document.getElementById("admin-dashboard-close").onclick=()=>document.getElementById("admin-dashboard-overlay").classList.remove("open");
 checkAuth();
 </script>
 </body>
