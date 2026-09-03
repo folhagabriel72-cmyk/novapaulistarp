@@ -3,82 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nova Paulista RP - Loja</title>
+<title>Nova Paulista RP - Loja VIP</title>
 <style>
+*{box-sizing:border-box}
 body{font-family:Arial;background:#0f0f0f;color:#fff;margin:0;padding:20px}
-.card{background:#1a1a1a;border:1px solid #333;border-radius:12px;padding:20px;margin:15px;max-width:350px;display:inline-block;vertical-align:top}
-button{background:#00ff88;color:#000;border:0;padding:12px 20px;border-radius:8px;font-weight:bold;cursor:pointer;width:100%}
-#pixModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;flex-direction:column;z-index:9999}
-#pixBox{background:#fff;color:#000;padding:25px;border-radius:12px;max-width:400px;text-align:center}
-#qrcode img{width:250px;height:250px}
+h1{text-align:center}
+.sub{text-align:center;color:#888;margin-bottom:25px}
+.cards{display:flex;flex-wrap:wrap;justify-content:center;gap:15px}
+.card{background:#1a1a1a;border:1px solid #333;border-radius:12px;padding:20px;width:300px}
+.card:hover{border-color:#ffcc00}
+.card .price{font-size:22px;font-weight:bold;color:#00ff88;margin:10px 0}
+button{background:#00ff88;color:#000;border:0;padding:12px;border-radius:8px;font-weight:bold;cursor:pointer;width:100%}
+#pixModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);justify-content:center;align-items:center;z-index:9999;padding:15px}
+#pixBox{background:#fff;color:#000;padding:22px;border-radius:14px;max-width:440px;width:100%;text-align:center;max-height:90vh;overflow-y:auto}
+.pix-key-box{background:#0f0f0f;color:#00ff88;padding:14px;border-radius:8px;font-size:18px;font-weight:bold;margin:10px 0;word-break:break-all}
+.ticket-link{background:#5865F2;color:#fff;padding:10px;border-radius:8px;display:block;text-decoration:none;font-weight:bold;margin:10px 0}
+.form-group{text-align:left;margin:10px 0}
+.form-group input{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px}
 </style>
 </head>
 <body>
+
 <h1>🛒 Nova Paulista RP - Loja VIP</h1>
+<p class="sub">PIX via chave EMAIL + comprovante no ticket</p>
 
-<div class="card">
-<h3>VIP Bronze - R$15,00</h3>
-<p>Benefícios básicos</p>
-<button onclick="comprar('VIP Bronze', 15)">Comprar</button>
-</div>
-
-<div class="card">
-<h3>VIP Prata - R$25,00</h3>
-<p>Benefícios intermediários</p>
-<button onclick="comprar('VIP Prata', 25)">Comprar</button>
-</div>
-
-<div class="card">
-<h3>VIP Ouro - R$45,00</h3>
-<p>Benefícios completos</p>
-<button onclick="comprar('VIP Ouro', 45)">Comprar</button>
+<div class="cards">
+<div class="card"><h3>VIP Bronze - R$15</h3><div class="price">R$15,00</div><button onclick="comprar('VIP Bronze',15)">Comprar</button></div>
+<div class="card"><h3>VIP Prata - R$25</h3><div class="price">R$25,00</div><button onclick="comprar('VIP Prata',25)">Comprar</button></div>
+<div class="card"><h3>VIP Ouro - R$45</h3><div class="price">R$45,00</div><button onclick="comprar('VIP Ouro',45)">Comprar</button></div>
 </div>
 
 <div id="pixModal">
 <div id="pixBox">
-<h2>Pague com PIX</h2>
-<div id="qrcode"></div>
-<p id="pixValor"></p>
-<textarea id="pixCopiaCola" style="width:100%;height:80px;margin:10px 0"></textarea>
-<button onclick="copiar()">Copiar Código</button>
-<p style="font-size:12px;margin-top:10px">Após pagar, a liberação é automática no Discord!</p>
-<button onclick="fechar()" style="background:#ff4444;color:#fff;margin-top:15px">Fechar</button>
+<h2>💰 Pague com PIX</h2>
+<p id="pixProdutoNome" style="font-weight:bold"></p>
+<div class="pix-key-box" id="pixChaveTexto"></div>
+<div id="pixTitularTexto" style="font-size:12px;color:#555"></div>
+<button onclick="copiarChave()" style="background:#000;color:#00ff88;border:1px solid #00ff88;margin:10px 0">📋 Copiar Chave EMAIL</button>
+
+<div style="text-align:left;border-top:1px solid #ddd;padding-top:12px;margin-top:12px">
+<div class="form-group"><label>Nome no Jogo</label><input id="nomeJogo" placeholder="Gabriel Folha"></div>
+<div class="form-group"><label>ID Discord</label><input id="discordId" placeholder="@seunome"></div>
+<div class="form-group"><label>ID Ticket</label><input id="ticketId" value="1544336229800091818"></div>
+<div class="form-group"><label>Comprovante (print)</label><input type="file" id="comprovanteFile" accept="image/*" onchange="previewImg(event)"><div id="previewArea"></div></div>
+</div>
+
+<a class="ticket-link" href="https://discord.com/channels/1544327387720982548/1544336229800091818" target="_blank">🎫 ABRIR TICKET NO DISCORD</a>
+<button onclick="enviarComprovante()" style="background:#ffcc00">✅ Já paguei, enviar</button>
+<button onclick="fechar()" style="background:#ff4444;color:#fff;margin-top:8px">Fechar</button>
 </div>
 </div>
 
 <script>
-async function comprar(produto, valor){
-  const discord = prompt("Qual seu ID do Discord? (ex: 123456789)");
-  if(!discord) return;
+// ===== TROCA SUA CHAVE AQUI =====
+const CHAVE_PIX_EMAIL = 'seuemail@gmail.com';
+const NOME_TITULAR = 'Nova Paulista Roleplay';
+
+function comprar(produto, valor){
+  document.getElementById('pixChaveTexto').innerText = CHAVE_PIX_EMAIL;
+  document.getElementById('pixTitularTexto').innerText = 'Titular: ' + NOME_TITULAR;
+  document.getElementById('pixProdutoNome').innerText = produto + ' - R$' + valor;
   document.getElementById('pixModal').style.display='flex';
-  document.getElementById('qrcode').innerHTML='Gerando PIX...';
-  
-  try{
-    const res = await fetch('/api/create-pix', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ produto, valor, discordId: discord })
-    });
-    const data = await res.json();
-    if(data.error) throw new Error(data.error);
-    
-    document.getElementById('qrcode').innerHTML = `<img src="${data.qrcodeImagem}">`;
-    document.getElementById('pixCopiaCola').value = data.pixCopiaECola;
-    document.getElementById('pixValor').innerText = `${produto} - R$ ${valor},00`;
-  }catch(e){
-    alert('Erro ao gerar PIX: ' + e.message);
-    fechar();
-  }
 }
-function copiar(){
-  const el = document.getElementById('pixCopiaCola');
-  el.select();
-  document.execCommand('copy');
-  alert('PIX copiado!');
-}
-function fechar(){
-  document.getElementById('pixModal').style.display='none';
-}
-</script>
-</body>
-</html>
+function copiarChave(){ navigator.clipboard.writeText(CHAVE_PIX_EMAIL); alert('Copiado: ' + CHAVE_PIX_EMAIL); }
+function previewImg(e){ const r=new FileReader(); r.onload=ev=>document.getElementById('previewArea').innerHTML=`<img src="${ev.target.result}" style="max-width:100%;margin-top:8px">`; r.readAsDataURL(e
